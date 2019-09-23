@@ -1,11 +1,9 @@
-
 <?php
-
+    
     session_start();
     include_once 'class.user.php';
     $user = new User(); 
     $uid = $_SESSION['uid'];
-    
     if (!$user->get_session()){
         header("location:accounts/login.php");
     }
@@ -14,13 +12,12 @@
         $user->user_logout();
         header("location:accounts/login.php");
     }
-    
-    // login attendance
-    
+// login attendance
+
     $conn = mysqli_connect('localhost','root','','employeemanagement');
     $uid = $_SESSION['uid'];
     $type = 'login';
-    $var1 = "";
+    $var1="";
     $date = date('Y-m-d ');
     $date1 = date('h:m:s');
     $query = "INSERT INTO tblattendance (empid,date,time,type) VALUES ('$uid','$date',now(),'$type')";
@@ -33,16 +30,19 @@
     else
     {
         // $var1="fail";
-
        // echo "error while login"; 
     }
-?>    
+   
 
-<?php
+    ?>    
 
-    $user = new User(); 
-    $uid = $_SESSION['uid'];
 
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+
+ <?php
+
+    $user = new User(); $uid = $_SESSION['uid'];
     if (!$user->get_session()){
     header("location:login.php");
     }
@@ -51,20 +51,45 @@
     $user->user_logout();
     header("location:login.php");
     }
-
-?> 
+    ?> 
 
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+
+
+    <!-- <script src="jquery-3.4.1.min.js"></script> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">  
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
             <title>loginlogo</title>
                 <style>
+                    .container{
+                        /* border:1px solid black; */
+                        width:280px;  
+                       color:black;
+                        font-size:15px;
+                        height:755px;
+                        /* background-color:black; */
+                        margin-left:-3px
+                        
+                    }
+                   
+                    img {
+                        position: absolute;
+                        z-index: -2;
+                    }
+                   
+                    body{
+                        height: 200px;
+                        background-image: linear-gradient(to bottom right,white,skyblue);
+                    }
+                    h1{
+                        font-family:'Georgia', Times New Roman, Times, serif;
+                    }
                     img {
                         position: fixed;
                         z-index: -2;
@@ -79,7 +104,7 @@
                     }
                     .sidenav {
                         height: 100%;
-                        width: 250px;
+                        width: 230px;
                         position: fixed;
                         z-index: 1;
                         top: 0;
@@ -135,24 +160,33 @@
                         overflow: auto;
                     }
                     .modal-backdrop {display:none;}
+                   
                 </style>
+                  
+                  
+                 
     </head>
     <body> 
-        <div style="margin-top:-10px;position:fixed">
-            <a href="http://localhost/intern/logo.php"><img src="http://razorbee.com/wp-content/uploads/2017/08/razorbee_logo.png" alt="RazorBee" class="img-logo-w2" style="width: 250px;  padding-top: -50px; padding-left:25px"></a>
-            <h1 style="color:blue;text-align:right">Hello <?php $user->get_fullname($uid); ?></h1>
-            <div style="margin-left:1620px; font-size:27px" id="header"><a href="http://localhost/EmployeeManagement/accounts/login.php">LogOut</a></div>
+       
+        <div style="margin-top:-10px">
+           <a href="http://localhost/intern/logo.php"><img src="http://razorbee.com/wp-content/uploads/2017/08/razorbee_logo.png" alt="RazorBee" class="img-logo-w2" style="width: 250px;  padding-top: -50px; padding-left:25px"></a>
+            <h1 style="color:blue;margin-left:1530px">Hello <?php $user->get_fullname($uid); ?></h1>
+           
+           <div style="margin-left:1620px; font-size:27px" id="header"><a href="http://localhost/EmployeeManagement/accounts/login.php">LogOut</a></div>
+   
         </div><br> 
+        
         <div>
-            <img src="https://image.freepik.com/free-photo/pine-tree-evergreen-juniper-background-christmas-winter-wallpaper_3249-2723.jpg" style="width:100%;margin-top:80px; height:100%">  
+        <img src="https://image.freepik.com/free-photo/pine-tree-evergreen-juniper-background-christmas-winter-wallpaper_3249-2723.jpg" style="width:100%; height:100%">  
+            
         </div>   
                 <p id="show" style="margin-left:820px;margin-top:150px;font-size:50px;color:green"></p> 
                 <p id="show1" style="margin-left:810px;margin-top:150px;font-size:50px;color:red"></p> 
             <div class="sidenav">
                     <button class="dropdown-btn">Attendance</button>
                 <div class="dropdown-container"><br>
-                    <input type="button" class="btn btn-success" style="width:120px;" onclick="myFunction()" value="LogIn" disabled></input><br><br>
-                    <input type="button" class="btn btn-danger" style="width:120px;" onclick="myFunction1()" value="LogOut" disabled></a></input><br><br>
+                    <input type="button" class="btn btn-success" style="width:120px;" onclick="myFunction()" value="LogIn"></input><br><br>
+                    <input type="button" class="btn btn-danger" style="width:120px;" onclick="myFunction1()" value="LogOut"></a></input><br><br>
                         <!-- <button class="btn btn-danger" style="width:120px"><a href="#">LogOut</a></button> -->
                         <div class="container">
                             <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal" style="margin-left:-15px">View Attendance</button>
@@ -222,7 +256,7 @@
                             {
                                 this.classList.toggle("active");
                                 var dropdownContent = this.nextElementSibling;
-                                if (dropdownContent.style.display === "block")
+                                if (dropdownContent.style.display === "block"
                                 {
                                     dropdownContent.style.display = "none";
                                 }else 
@@ -263,4 +297,5 @@
             echo "error while logout"; 
         }
     ?>
+    
 </html>

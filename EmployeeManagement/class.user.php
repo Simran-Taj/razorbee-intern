@@ -75,7 +75,7 @@ class User{
 
     /*** Admin check  ***/
     public function IsAdmin($emailusername, $password){
-        $sql2="SELECT isadmin FROM `employeemaster` WHERE emailid='$emailusername' and 'isAdmin'='1'";
+        $sql2="SELECT isadmin FROM `employeemaster` WHERE emailid='$emailusername' and isadmin=1";
 
 
         //checking if the username is available in the table

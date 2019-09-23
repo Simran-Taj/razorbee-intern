@@ -47,7 +47,8 @@ if (isset($_GET['q'])){
                     }
                     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
                     body{
-                        font-family:Arial, Helvetica, sans-serif;
+                        height: 200px;
+                   background-image: linear-gradient(to bottom right,white,skyblue);
                     }
                     h1{
                         font-family:'Georgia', Times New Roman, Times, serif;
