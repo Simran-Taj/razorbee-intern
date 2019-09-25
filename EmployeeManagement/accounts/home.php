@@ -162,9 +162,9 @@ header("location:login.php");
             </nav>
             <div>
                 <!-- login validation -->
-            <form class="form-horizontal" id="formCreate4" method="POST" action="#" style="display: none;">
-                <p style="color:rgb(153, 47, 153);font-size:40px;margin-left:500px;margin-top:200px">Login successfull</p>        
-            </form>
+            <!-- <form class="form-horizontal" id="formCreate4" method="POST" action="#" style="display: none;"> -->
+                <p style="color:rgb(153, 47, 153);font-size:40px;margin-left:500px;margin-top:200px" id="attendanceloginmessage"></p>        
+            <!-- </form> -->
 </div>
 
              <!-- logout validation -->
@@ -429,7 +429,7 @@ header("location:login.php");
             })
             // login
             $('#login').on('click',function(){
-                $('#formCreate4').show();
+               // $('#formCreate4').show();
                 $('#login').attr("disabled", true);
                 $('#projecttable').hide();
                 $('#formCreate1').hide();
@@ -564,10 +564,13 @@ $('#login').click(function(e) {
         url: "http://localhost/EmployeeManagement/accounts/loginattendance.php",
         success: function(msg) {
             //stuffs
+            // $('#formCreate4').show();
+            $('#attendanceloginmessage').text(msg);
         },
-        complete: function() {
-            $(this).data('requestRunning', false);
-        }
+       
+        // complete: function() {
+        //     $(this).data('requestRunning', false);
+        // }
     });      
 }); 
 // logout post 
