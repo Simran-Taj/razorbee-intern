@@ -6,6 +6,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
+    position:fixed;
 }
 
 p {
@@ -192,7 +193,7 @@ tr:nth-child(even) {
   }
 #t02 {
     margin-top:5px;
-    height: 500px;
+    height: 550px;
     /* position:fixed; */
     display: inline-block;
     width: 620px; 
@@ -201,15 +202,15 @@ tr:nth-child(even) {
 }
 #t01 {
     margin-top:5px;
-    height: 500px;
+    height: 550px;
     display: inline-block;
-    width: 500px; 
+    width: 420px; 
     overflow: auto;
-    margin-left:380px;
+    margin-left:430px;
 }
 #t03 {
     margin-top: 8px;
-    height: 500px;
+    height: 550px;
     display: inline-block;
     width: 970px; 
     overflow: auto;
