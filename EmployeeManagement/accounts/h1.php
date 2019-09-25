@@ -150,7 +150,7 @@ header("location:login.php");
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <h1 style="color:purple;margin-left:945px;font-size:25px;margin-top:-10px">Hello <?php $user->get_fullname($uid); ?></h1>
+                                <h1 style="color:purple;margin-left:900px;font-size:25px;margin-top:-10px">Hello <?php $user->get_fullname($uid); ?></h1>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" style="margin-top:-20px;font-size:25px">Logout</a>
@@ -217,7 +217,7 @@ header("location:login.php");
                 
                 <form class="form-horizontal" id="formCreate1" method="POST" action="#" style="display: none;">
                 <div class="modal-body">
-                <h2 style="margin-top:-30px;margin-left:500px;color: rgb(153, 47, 153)">Time Sheet</h2><br>
+                <h2 style="margin-top:-35px;margin-left:500px;color: rgb(153, 47, 153)">Time Sheet</h2><br>
                             <table class="table table-bordered" id="t02" style="border:1px solid white;">
                             <tr>
                                 <th style="width:150px;">Date</th>
@@ -270,12 +270,13 @@ header("location:login.php");
 
 <!-- end -->
 
-            <div>
-            
+            <div >
+             
                 <form class="form-horizontal" id="formCreate" method="POST" action="#" style="display: none;"><br><br>
-                 <div class="container" style="border:1px solid black;">
+                <h2 style="color:rgb(153, 47, 153);margin-top:-40px;margin-left:500px;">Create New Project</h1> <br> 
+                 <div class="container" style="border:1px solid black;"><br><br>
                     
-                <h2 style="color:rgb(153, 47, 153)">Create New Project</h1> <br>   
+                 
                 <b>Project Name:</b><br><br><input class="form-control" type="text" name="ProjectName" id="ProjectName" placeholder ="Enter project name">
                     <br><br>
                     <b>Client Name    : </b><br><br><input class="form-control" type="text" name="ClientName" id = "ClientName" placeholder ="Enter client name">
@@ -318,9 +319,10 @@ header("location:login.php");
 
                 </div>
             </form>
+            <!-- view project -->
             <div class="container" id="projecttable" style="display: none;">
  
-            <h2 style="margin-top:-37px;margin-left:500px;color: rgb(153, 47, 153)">Time Sheet</h2><br>
+            <h2 style="margin-top:-20px;margin-left:500px;color: rgb(153, 47, 153)">View Project</h2><br>
                             <table class="table table-bordered" id="t03" style="border:1px solid white;">
                 <thead>
                     <tr>
@@ -425,6 +427,7 @@ header("location:login.php");
             $('#login').on('click',function(){
                 $('#formCreate4').show();
                 // $('#formCreate4').attr("disabled", true);
+                
                 $('#projecttable').hide();
                 $('#formCreate1').hide();
                 $('#ProjectDetails').hide();
@@ -549,7 +552,7 @@ header("location:login.php");
     });
 </script> -->
 </body>
-
+<!-- 
 <?php
 
     $conn = mysqli_connect('localhost','root','','employeemanagement');
@@ -566,14 +569,14 @@ header("location:login.php");
     // }
     if(mysqli_query($conn,$query))
     {
-        // echo 'Logout succesfull';
+        echo 'Logout succesfull';
     }
     else
     {
         echo "error while logout"; 
     }
 
-?>
+?> -->
 <!-- add task to database -->
 <script>
     function save($taskid){

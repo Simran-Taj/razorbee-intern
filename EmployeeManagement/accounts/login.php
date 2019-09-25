@@ -12,11 +12,11 @@
     if ($IsAdmin!=0) {
         //    ($user['status'] == '0');// check the value of the 'status' in the db
                 //go to admin area
-                header("Location: ../home.php");
+                header("Location: ../h1.php");
         }
     else {
             if($login){
-                header("Location: ../home1.php");
+                header("Location: ../h1.php");
             }
     else{
                 // Registration Failed
