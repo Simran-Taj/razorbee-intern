@@ -9,7 +9,7 @@
     // $var2="";
     $date = date('Y-m-d ');
     // $date1 = date('h:m:s');
-     $query1 = 'SELECT * FROM tblattendance WHERE empid= "' . $_SESSION['uid'] . '"  and type="login"'; //date and type should be
+     $query1 = 'SELECT * FROM tblattendance WHERE empid= "' . $_SESSION['uid'] . '" and  date(now()) and type="login"'; //date and type should be
      $result = mysqli_query($conn,$query1);
      $user_data = mysqli_fetch_array($result);
      $count_row = $result->num_rows;

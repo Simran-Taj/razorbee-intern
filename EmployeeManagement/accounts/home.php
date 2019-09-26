@@ -13,27 +13,6 @@ if (isset($_GET['q'])){
     $user->user_logout();
     header("location:accounts/login.php");
 }
-
-// login attendance
-// $conn = mysqli_connect('localhost','root','','employeemanagement');
-// $uid = $_SESSION['uid'];
-// $type = 'login';
-// $var1 = "";
-// $date = date('Y-m-d ');
-// $date1 = date('h:m:s');
-// $query = "INSERT INTO tblattendance (empid,date,time,type) VALUES ('$uid','$date',now(),'$type')";
-
-// if(mysqli_query($conn,$query))
-// {
-//     // $var1  = "Success";
-//    // print "login successfull";
-// }
-// else
-// {
-//     // $var1="fail";
-
-//    // echo "error while login"; 
-// }
 ?>    
 
 <?php
@@ -67,7 +46,7 @@ header("location:login.php");
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/EmployeeManagement/accounts/styles.css">
 
     <!-- Font Awesome JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -83,7 +62,7 @@ header("location:login.php");
             <ul class="list-unstyled components">
                 <div class="sidebar-header" style="margin-top:-20px">
                     <!-- <h3>RazorBee Online Solutions</h3> -->
-                    <a href="#"><img src="http://razorbee.com/wp-content/uploads/2017/08/razorbee_logo.png" alt="RazorBee" class="img-logo-w2" style="width: 190px;  margin-top: -15px;font-color:white "></a>
+                    <a href="#"><img src="http://razorbee.com/wp-content/uploads/2017/08/razorbee_logo.png" alt="RazorBee" class="img-logo-w2" style="width: 190px;  margin-top: -10px;font-color:white "></a>
 
                 </div>
                 <li class="active">
@@ -150,7 +129,7 @@ header("location:login.php");
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <h1 style="color:purple;margin-left:930px;font-size:25px;margin-top:-10px">Hello <?php $user->get_fullname($uid); ?></h1>
+                                <h1 style="color:purple;margin-left:850px;font-size:25px;margin-top:-10px">Hello <?php $user->get_fullname($uid); ?></h1>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="../accounts/login.php" style="margin-top:-20px;font-size:25px">Logout</a>
@@ -163,16 +142,16 @@ header("location:login.php");
             <div>
                 <!-- login validation -->
             <!-- <form class="form-horizontal" id="formCreate4" method="POST" action="#" style="display: none;"> -->
-                <p style="color:rgb(153, 47, 153);font-size:40px;margin-left:500px;margin-top:200px" id="attendanceloginmessage"></p>        
+                <p style="color:rgb(153, 47, 153);font-size:40px;margin-left:400px;margin-top:200px" id="attendanceloginmessage"></p>        
             <!-- </form> -->
 </div>
 
              <!-- logout validation -->
              <div>
-            <form class="form-horizontal" id="formCreate5" method="POST" action="#" style="display: none;">
-                <p style="color:rgb(153, 47, 153);font-size:40px;margin-left:500px;margin-top:200px">Logout successfull</p>        
-            </form>
-</div>
+            <!-- <form class="form-horizontal" id="formCreate5" method="POST" action="#" style="display: none;"> -->
+                <p style="color:rgb(153, 47, 153);font-size:40px;margin-left:400px;margin-top:200px" id="attendancelogoutmessage"></p>        
+            <!-- </form> -->
+            </div>
             <!-- view attendance -->
             <div>
                 
@@ -186,7 +165,7 @@ header("location:login.php");
                                                 <!-- <th style="width:200px">Date</th>
                                                 <th style="width:200px">Time</th>
                                                 <th style="width:200px">Type</th> -->
-                                                <th style="width:368px;position:fixed">Date<span style="margin-left:80px">Time</span><span style="margin-left:90px">Type</span></th>
+                                                <th style="width:356px;position:fixed">Date<span style="margin-left:80px">Time</span><span style="margin-left:90px">Type</span></th>
                                                 <th style="width:140px;text-align:center">Time</th>
                                                 <th style="width:120px">Type</th>
                                             <tr>
@@ -219,15 +198,15 @@ header("location:login.php");
             <div>
                 
                 <form class="form-horizontal" id="formCreate1" method="POST" action="#" style="display: none;">
-                <div class="modal-body">
-                <h2 style="margin-top:-30px;margin-left:500px;color: rgb(153, 47, 153)">Time Sheet</h2><br>
+                <div class="modal-body"><br>
+                <h2 style="color:rgb(153, 47, 153);margin-top:-45px;margin-left:500px;">Time Sheet</h1> 
                             <table class="table table-bordered" id="t02" style="border:1px solid white;">
                             <tr>
                                 <!-- <th style="width:150px;">Date</th>
                                 <th style="width:350px;">Task</th>
                                 <th >Add Task</th> -->
-                                <th style="position:fixed;width:562px">Date<span style="margin-left:120px">Task</span><span style="margin-left:260px"> Add task </span></th>
-                                <th style="width:350px;">Task</th>
+                                <th style="position:fixed;width:561px">Date<span style="margin-left:120px">Task</span><span style="margin-left:260px"> Add task </span></th>
+                                <th style="width:360px;">Task</th>
                                 <th >Add Task</th>
                             </tr>
                             <tr>
@@ -263,7 +242,7 @@ header("location:login.php");
                 </div>
                     <!-- Modal body -->
                 <div class="modal-body">
-                    <input type="text" class="form-control" id="taskdescription"  placeholder="Enter Task">
+                    <textarea type="text" class="form-control" id="taskdescription"  placeholder="Enter Task"></textarea>
                 </div>
                     <!-- Modal footer -->
                 <div class="modal-footer">
@@ -275,13 +254,12 @@ header("location:login.php");
     </div>
 
 <!-- end -->
-
+<!-- project -->
             <div>
             
                 <form class="form-horizontal" id="formCreate" method="POST" action="#" style="display: none;"><br><br>
-                 <div class="container" style="border:1px solid black;">
-                    
-                <h2 style="color:rgb(153, 47, 153)">Create New Project</h1> <br>   
+                <h2 style="color:rgb(153, 47, 153);margin-top:-30px;margin-left:500px;">Create New Project</h1> <br>   
+                 <div class="container" style="border-radius: 25px;border:1px solid black;"><br><br>
                 <b>Project Name:</b><br><br><input class="form-control" type="text" name="ProjectName" id="ProjectName" placeholder ="Enter project name">
                     <br><br>
                     <b>Client Name    : </b><br><br><input class="form-control" type="text" name="ClientName" id = "ClientName" placeholder ="Enter client name">
@@ -290,12 +268,13 @@ header("location:login.php");
                     <br>
                     <textarea class="form-control" name="description" id = "description" placeholder ="Enter Description"></textarea>
                     <br><br>
-                    <button type="submit" class="btn btn-primary" type="button" id="submitProject">Submit</button>
+                    <button type="submit" class="btn btn-primary" type="button" id="submitProject">Submit</button><br><br>
                     <p id="tagcreate" ></p><br>
                                 </div>
                 </form>
                                
             </div>
+
             <form  class="form-horizontal" id="ProjectDetails" style="display:none;">
                 <h1 id="error"></h1>
                 <h1 id="title"></h1><hr>
@@ -324,9 +303,10 @@ header("location:login.php");
 
                 </div>
             </form>
+            <!-- view project -->
             <div class="container" id="projecttable" style="display: none;">
  
-            <h2 style="margin-top:-37px;margin-left:500px;color: rgb(153, 47, 153)">Time Sheet</h2><br>
+            <h2 style="color:rgb(153, 47, 153);margin-top:-15px;margin-left:500px;">View Project</h1> <br>
                             <table class="table table-bordered" id="t03" style="border:1px solid white;">
                 <thead>
                     <tr>
@@ -391,8 +371,9 @@ header("location:login.php");
                 $('#ProjectDetails').hide();
                 $('#formCreate1').hide();
                 $('#formCreate2').hide();
-                $('#formCreate5').hide();
-                $('#formCreate4').hide();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+               
             })
             $('#createproject').on('click',function(){
                 $('#projecttable').hide();
@@ -400,18 +381,20 @@ header("location:login.php");
                 $('#ProjectDetails').hide();
                 $('#formCreate1').hide();
                 $('#formCreate2').hide();
-                $('#formCreate5').hide();
-                $('#formCreate4').hide();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+               
             })
             // timesheet
             $('#timesheet').on('click',function(){
-                $('#projecttable').hide();
                 $('#formCreate1').show();
+                $('#projecttable').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
                 $('#formCreate2').hide();
-                $('#formCreate5').hide();
-                $('#formCreate4').hide();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+               
             })
             // attendance
             $('#viewattendance').on('click',function(){
@@ -420,39 +403,15 @@ header("location:login.php");
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
                 $('#formCreate2').show();
-                $('#formCreate5').hide();
-                $('#formCreate4').hide();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+               
             })
             $('#backToProject').on('click',function(){
                 $('#ProjectDetails').hide();
                 $('#viewproject').click();
             })
-            // login
-            $('#login').on('click',function(){
-               // $('#formCreate4').show();
-                $('#login').attr("disabled", true);
-                $('#projecttable').hide();
-                $('#formCreate1').hide();
-                $('#ProjectDetails').hide();
-                $('#formCreate').hide();
-                $('#formCreate2').hide();
-                $('#formCreate5').hide();
-               
-            })
-            // logout
-            $('#logout').on('click',function(){
-                $('#formCreate5').show();
-                $('#logout').attr("disabled", true);
-                $('#projecttable').hide();
-                $('#formCreate1').hide();
-                $('#ProjectDetails').hide();
-                $('#formCreate').hide();
-                $('#formCreate2').hide();
-                $('#formCreate4').hide();
-              
-            })
-
-                        
+                       
            $("#submitProject").click(function(){
 
                 
@@ -544,8 +503,7 @@ header("location:login.php");
                         data: "task="+c,
                         cache: false,
                              success: function(result){
-                                //  console.log("hi");
-                             //alert(result);
+                              
                              document.getElementById("taskdescription").value="";
                         }
                         });
@@ -566,32 +524,23 @@ $('#login').click(function(e) {
             //stuffs
             // $('#formCreate4').show();
             $('#attendanceloginmessage').text(msg);
+            $('#login').attr("disabled", true);
         },
-       
-        // complete: function() {
-        //     $(this).data('requestRunning', false);
-        // }
     });      
 }); 
 // logout post 
 $('#logout').click(function(e) {
     e.preventDefault();
-
-    if ( $(this).data('requestRunning') ) {
-        return;
-    }
-
-    $(this).data('requestRunning', true);
-
     $.ajax({
         type: "POST",
         url: "http://localhost/EmployeeManagement/accounts/logoutattendance.php",
         success: function(msg) {
             //stuffs
+            // $('#formCreate5').show();
+            $('#attendancelogoutmessage').text(msg);
+            $('#logout').attr("disabled", true);
+            $('#attendanceloginmessage').hide();
         },
-        complete: function() {
-            $(this).data('requestRunning', false);
-        }
     });      
 }); 
 </script> 

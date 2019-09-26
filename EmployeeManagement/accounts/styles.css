@@ -1,7 +1,12 @@
 /*
     DEMO STYLE
 */
-
+/* 
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: white;
+    }
+  } */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: 'Poppins', sans-serif;
@@ -60,7 +65,9 @@ a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background-image: linear-gradient(rgb(146, 56, 146),rgb(126, 8, 120));
+    /* background: rgb(17, 55, 223)!important; */
+    /* background-color: #344765; */
+    background-image: linear-gradient(rgb(187, 42, 163),rgb(97, 6, 82));
     /* background: rgb(119, 46, 115); */
 
     color: #fff;
@@ -74,7 +81,7 @@ a:focus {
 #sidebar .sidebar-header {
     padding: 20px;
     /* background: #6d7fcc; */
-        /* background: rgb(102, 121, 209); */
+        background: rgb(228, 194, 222);
         /* background: rgb(146, 56, 146); */
         /* background-image: linear-gradient(rgb(187, 160, 187),rgb(172, 133, 170)); */
 
@@ -93,7 +100,7 @@ a:focus {
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.1em;
+    font-size: 1.2em;
     display: block;
 }
 
@@ -106,7 +113,8 @@ a:focus {
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: rgb(206, 163, 206);
+    background: rgb(146, 100, 146);
+    /* margin-top:-7px; */
 }
 
 a[data-toggle="collapse"] {
@@ -122,33 +130,13 @@ a[data-toggle="collapse"] {
 }
 
 ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: rgb(146, 56, 146);
+     font-size: 1.0em !important;
+    /* padding-left: 30px !important; */ 
+    background: rgb(228, 194, 222);
+    color:black;
 }
 
-ul.CTAs {
-    padding: 20px;
-}
 
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
-a.download {
-    background: #fff;
-    color: #7386D5;
-}
-
-a.article,
-a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
-}
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -167,7 +155,7 @@ a.article:hover {
 
 
 /* table {width:100%;} */
-table#t01 tr:nth-child(even) {background-color: red;}
+/* table#t01 tr:nth-child(even) {background-color: red;} */
 table#t01 tr:nth-child(odd) {background-color: #fff;}
 table#t01 th {
     background-color: rgb(153, 47, 153);
@@ -196,7 +184,7 @@ tr:nth-child(even) {
     height: 550px;
     /* position:fixed; */
     display: inline-block;
-    width: 620px; 
+    width: 580px; 
     overflow: auto;
     margin-left:300px;
 }
