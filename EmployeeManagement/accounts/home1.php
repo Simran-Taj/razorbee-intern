@@ -350,13 +350,14 @@ header("location:login.php");
                 </form>
 
                 <label>Qualification <span style="color:red">*</span>:</label>
-                <textarea type="text" id="qualification" name="name" placeholder="Enter Qualification" class="form-control" required rows="1" cols="105"></textarea><br><br>
-            
+                <textarea type="text" id="qualification" name="name" placeholder="Enter Qualification" class="form-control" required rows="1" cols="105"></textarea>
+            <br><br>
                 <label>Present Address <span style="color:red">*</span>:</label>
-                <textarea type="text" id="presentaddress" name="name" placeholder="Enter Present Address" class="form-control" required rows="4" cols="105"></textarea><br><br>
+                <label style="margin-left:270px">Permanent Address <span style="color:red">*</span>:</label><br>
+                <textarea type="text" id="presentaddress" name="name" placeholder="Enter Present Address" class="form-control" required rows="6" cols="50"></textarea>
 
-                <label>Permanent Address <span style="color:red">*</span>:</label>
-                <textarea type="text" id="permanentaddress" name="name" placeholder="Permanent Address" class="form-control" required rows="4" cols="105"></textarea><br><br>
+               
+                <textarea type="text" id="permanentaddress" name="name" placeholder="Permanent Address" class="form-control" required rows="6" cols="50"></textarea><br><br>
                 
                 <label>Nationality <span style="color:red"></span>:</label>
                 <input type="text" id="nationality" name="name" placeholder="Indian" class="form-control" style="margin-left:40px" readonly>
