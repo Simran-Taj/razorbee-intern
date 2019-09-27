@@ -12,11 +12,11 @@
     if ($IsAdmin!=0) {
         //    ($user['status'] == '0');// check the value of the 'status' in the db
                 //go to admin area
-                header("Location: ../h1.php");
+                header("Location: ../accounts/home.php");
         }
     else {
             if($login){
-                header("Location: ../h1.php");
+                header("Location: ../accounts/home.php");
             }
     else{
                 // Registration Failed
@@ -90,15 +90,30 @@
                 // }
         </script>
         <style>
+                        
+                @media only screen and (max-width: 600px) {
+                    .box {
+                    border:1px solid black;
+                    border-radius:25px;
+                    /* width:480px;   */
+                    margin-top:70px;
+                    font-size:15px;
+                    margin-left:25px;
+                    /* background-color:rgb(215, 215, 215); */
+                }
+                }
+    /* desktops */
                 img {
                         position: fixed;
                         z-index: -2;
                     }
-                .container {
+                .box {
                     border:1px solid black;
+                    border-radius:25px;
                     width:480px;  
                     margin-top:70px;
                     font-size:15px;
+                    margin-left:525px;
                     /* background-color:rgb(215, 215, 215); */
                 }
                 .design{
@@ -106,11 +121,6 @@
                     
                 }
                 
-                img {
-                    position: absolute;
-                    z-index: -2;
-                }
-
                 .logindesign{
                     float: right;
                     color: white;
@@ -158,7 +168,7 @@
         <div>
             <img src="https://image.freepik.com/free-photo/pine-tree-evergreen-juniper-background-christmas-winter-wallpaper_3249-2723.jpg" style="width:100%; position:fixed; height:100%">   
                 <form action="" method="post" name="login">
-                    <div  class="container" style="">
+                    <div  class="box" style="">
                         <div class="design"><br>
                             <span style="margin-left: 150px; font-size:35px">Login</span><br><br>
                                 <form id="formdata" class="form-inline" action="home.php" method="POST">
