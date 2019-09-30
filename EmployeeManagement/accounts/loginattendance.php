@@ -9,11 +9,12 @@
     // $var2="";
     $date = date('Y-m-d ');
     // $date1 = date('h:m:s');
-     $query1 = 'SELECT * FROM tblattendance WHERE empid= "' . $_SESSION['uid'] . '" and  date(now()) and type="login"'; //date and type should be
+     $query1 = 'SELECT * FROM tblattendance WHERE DATE(date)=CURDATE() and empid= "' . $_SESSION['uid'] . '" and type="login"';
+
      $result = mysqli_query($conn,$query1);
      $user_data = mysqli_fetch_array($result);
      $count_row = $result->num_rows;
-        if($count_row==0){
+        if($count_row == 0){
             $query = "INSERT INTO tblattendance (empid,date,time,type) VALUES ('$uid','$date',now(),'$type')";
                 if(mysqli_query($conn,$query))
                 {
@@ -26,7 +27,7 @@
                     echo "error while login"; 
                 }
         }else{
-             echo "already logged in" ;      
+             echo "already logged in";      
         }
 
 

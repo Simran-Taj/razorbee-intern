@@ -35,6 +35,12 @@ header("location:login.php");
 <html>
 
 <head>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <!-- [/] jquery -->
+
+        <!-- bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -263,7 +269,6 @@ header("location:login.php");
     <!-- end -->
     <!-- create project -->
             <div>
-            
                 <form class="form-horizontal" id="formCreate" method="POST" action="#" style="display: none;"><br><br>
                 <h2 style="color:rgb(153, 47, 153);margin-top:-30px;margin-left:450px;">Create New Project</h1> <br>   
                  <div class="container" style="border-radius: 25px;border:1px solid black;"><br><br>
@@ -278,8 +283,7 @@ header("location:login.php");
                     <button type="submit" class="btn btn-primary" type="button" id="submitProject">Submit</button><br><br>
                     <p id="tagcreate" ></p><br>
                                 </div>
-                </form>
-                               
+                </form>              
             </div>
 
             <form  class="form-horizontal" id="ProjectDetails" style="display:none;">
@@ -320,60 +324,68 @@ header("location:login.php");
                 <input type="text" id="empname" name="name" placeholder="Enter your name" class="form-control" style="margin-left:40px" required>
 
                 <label style="margin-left:80px">Emp Id <span style="color:red">*</span>:</label>
-                <input type="text" name="name" id="empid" placeholder="Enter your Id" class="form-control" style="margin-left:86px" required ><br><br>
+                <input type="text"  id="empid" placeholder="Enter your Id" class="form-control" style="margin-left:86px" required ><br><br>
 
                 <label>Email<span style="color:red">*</span>:</label>
-                <input type="text" name="name" id="email" placeholder="Enter your Email" class="form-control" style="margin-left:80px" required>
+                <input type="text"  id="email" placeholder="Enter your Email" class="form-control" style="margin-left:80px" required>
 
                 <label style="margin-left:80px">Designation <span style="color:red">*</span>:</label>
-                <input type="text" name="name" id="designation" placeholder="Enter your Designation" class="form-control" style="margin-left:46px" required><br><br>
+                <input type="text"  id="designation" placeholder="Enter your Designation" class="form-control" style="margin-left:46px" required><br><br>
 
                 <label>Mobile No <span style="color:red">*</span>:</label>
-                <input type="text" name="name" id="mobile" placeholder="Enter mobile number" class="form-control" style="margin-left:46px" required>
+                <input type="number"  id="mobile" placeholder="Enter mobile number" class="form-control" style="margin-left:46px" value="" required>
 
                 <label style="margin-left:80px">Alternate Mob No <span style="color:red">*</span>:</label>
-                <input type="text" name="name" id="alternatenumber" placeholder="Enter Alternate mob no" class="form-control"  style="margin-left:10px" required><br><br>
-
+                <input type="number"  id="alternatenumber" placeholder="Enter Alternate mob no" class="form-control"  style="margin-left:10px" ><br><br>
+                 
+         
                 <label>Date of Joining <span style="color:red">*</span>:</label>
-                <input type="text" name="name" id="doj" placeholder="Enter Date of Joining" class="form-control" style="margin-left:10px" required>
-
+                <input type="text"  id="doj" placeholder="Enter Date of Joining" class="form-control" style="margin-left:10px" required>
+           
                 <label style="margin-left:80px">Date of Birth <span style="color:red">*</span>:</label>
-                <input type="text" name="name" id="dop" placeholder="Enter Date of Birth" class="form-control" style="margin-left:46px" required><br><br>
-                
+                <input type="text"  name="dop" id="dob" placeholder="Enter Date of Birth" class="form-control" style="margin-left:46px" required><br><br>
+           
                 <form>
                     <label>Gender <span style="color:red">*</span>:</label>
-                    <input type="radio" id="gender" name="name" style="margin-left:60px">Male<input type="radio" name="name" style="margin-left:20px">Female<input type="radio" name="name" style="margin-left:20px">Other
+                    <input type="radio" id="male" name="gender" style="margin-left:60px" value="Male">male<input type="radio" name="gender" id="Female" style="margin-left:20px" value="Female">female<input type="radio" id="other" name="gender" style="margin-left:20px" value="Other">other
                 </form><br><br>
                 <form>
                     <label>Marital Status <span style="color:red;">*</span>:</label>
-                    <input type="radio" id="maritalstatus" name="name" style="margin-left:10px">Single<input type="radio" name="name" style="margin-left:20px">Married<br><br>
+                    <input type="radio" id="maritalstatus" name="name" style="margin-left:10px" value="Single">Single<input type="radio" name="name" value="Married" style="margin-left:20px">Married<br><br>
                 </form>
 
                 <label>Qualification <span style="color:red">*</span>:</label>
-                <textarea type="text" id="qualification" name="name" placeholder="Enter Qualification" class="form-control" required rows="1" cols="105"></textarea>
-            <br><br>
-                <label>Present Address <span style="color:red">*</span>:</label>
-                <label style="margin-left:270px">Permanent Address <span style="color:red">*</span>:</label><br>
-                <textarea type="text" id="presentaddress" name="name" placeholder="Enter Present Address" class="form-control" required rows="6" cols="50"></textarea>
+                <textarea type="text" id="qualification" placeholder="Enter Qualification" class="form-control" required rows="1" cols="105"></textarea>
+                <br><br>
+                <div>
+                <label>Present Address <span style="color:red">*</span>:</label><br>
+                <textarea type="text" id="presentaddress" placeholder="Enter Present Address" class="form-control" required rows="6" cols="50"></textarea>
+               </div>
 
-               
-                <textarea type="text" id="permanentaddress" name="name" placeholder="Permanent Address" class="form-control" required rows="6" cols="50"></textarea><br><br>
-                
+                <div style="margin-left:400px;margin-top:-160px">
+                <label style="">Permanent Address <span style="color:red">*</span>:</label><br>
+                <textarea type="text" id="permanentaddress" placeholder="Permanent Address" class="form-control" required rows="6" cols="50"></textarea><br><br>
+                </div>
+
                 <label>Nationality <span style="color:red"></span>:</label>
-                <input type="text" id="nationality" name="name" placeholder="Indian" class="form-control" style="margin-left:40px" readonly>
+                <input type="text" id="nationality"  placeholder="Indian" class="form-control" style="margin-left:40px" readonly>
 
                 <label style="margin-left:80px">Department <span style="color:red">*</span>:</label>
                 <select id="department" class="form-control" style="margin-left:75px">
-                    <option>IT</option>
-                    <option>WEb development</option>
-                    <option>Java development</option>
+                    <option name="dept" value="select">Select the department</option>
+                    <option name="dept" value="IT">IT</option>
+                    <option name="dept" value="web development">WEb development</option>
+                    <option name="dept" value="testing">Testing</option>
+                    <option name="dept" value="Graphic designer">Graphic designer</option>
+                    <option name="dept" value="Java development">Java development</option>
                 </select><br><br>
                 
-                <label>Admin Privileges <span style="color:red">*</span>:</label>
-                <input type="checkbox" id="adminprivileges"><br><br>
+                <label>Admin Privileges:</label>
+                <input type="checkbox" id="adminprivileges" name="admin" value="1"><br><br>
+
                 <button type="submit" class="btn btn-success" type="button" id="submitProject1">create</button>
                 <button class="btn btn-danger" style="margin-left:50px" id="cancel">Cancel</button>
-                <p style="color:rgb(153, 47, 153);font-size:40px;margin-left:400px;margin-top:px" id="tagcreate1"></p> 
+                <span style="color:rgb(153, 47, 153);font-size:40px;margin-left:50px;" id="tagcreate1"></span> 
                 
     
             </div>
@@ -384,7 +396,7 @@ header("location:login.php");
             <div class="container" id="projecttable" style="display: none;">
  
             <h2 style="color:rgb(153, 47, 153);margin-top:-470px;margin-left:480px;">View Project</h1> <br>
-                            <table class="table table-bordered" id="t03" style="border:1px solid white;">
+                <table class="table table-bordered" id="t03" style="border:1px solid white;">
                 <thead>
                     <tr>
                     <th style="position:fixed;">ID<span style="margin-left:20px">Project Name</span><span style="margin-left:100px">Client </span>
@@ -630,9 +642,14 @@ $('#logout').click(function(e) {
 }); 
 
 // add profile
+</script> 
+<script>
+ $(document).ready(function() {
 
-
-$("#submitProject1").click(function(){
+$('#addprofile').click(function() {
+    $('#submitProject1').click(function(e){
+    e.preventDefault();
+    // alert('hiii');
                 var empname = $("#empname").val();
                 var empid = $("#empid").val();
                 var email = $("#email").val();
@@ -641,30 +658,19 @@ $("#submitProject1").click(function(){
                 var alternatenumber = $("#alternatenumber").val();
                 var doj = $("#doj").val();
                 var dob = $("#dob").val();
-                var gender = $("#gender").val();
+                var gender = $("input[name='gender']:checked").val();
                 var presentaddress = $("#presentaddress").val();
                 var permanentaddress = $("#permanentaddress").val();
-                var maritalstatus = $("#maritalstatus").val();
-                // var nationality = $("#email").val();
-                var department = $("#department").val();
-                var adminprivileges = $("#adminprivileges").val();
-                // var func = "yes";
-                // Returns successful data submission message when the entered information is stored in database.
-                // var dataString = 'name1='+ name + '&client1='+ client + '&description1='+ description+ '&Func_createProject='+ func;
-                var dataString1 = 'empname2='+ empname + '&empid2='+ empid + '&email2='+ email+ '&designation2='+ designation + 
-                                  'mobile2='+ mobile + '&alternatenumber2='+ alternatenumber + '&doj2='+ doj + '&dob2='+ dob + '&gender2='+ gender + 
-                                   '&presentaddress2='+ presentaddress +
-                                  'permanentaddress2='+ permanentaddress + '&maritalstatus2='+ maritalstatus + '&department2='+ department + 
-                                  '&adminprivileges2='+ adminprivileges + '&Func_createProfile='+ func;
-                alert(dataString1);
-                if(empname =='')
-                // if(name==''||email==''||password=='')
-                {
-                    alert("Please Fill All Fields");
-                }
-                else
-                {
-                    alert("hi");
+                var maritalstatus = $("input[name='name']:checked").val();
+                var department = $("option[name='dept']:selected").val();
+                var adminprivileges = $("input[name='admin']:checked").val();
+               
+                var dataString1 = '&empname2='+ empname + '&empid2='+ empid + '&email2='+ email+ '&designation2='+ designation + 
+                                  '&mobile2='+ mobile + '&alternatenumber2='+ alternatenumber + '&doj2='+ doj + '&dob2='+ dob
+                                   + '&gender2='+ gender +'&presentaddress2='+ presentaddress +'&permanentaddress2='+ permanentaddress 
+                                   + '&maritalstatus2='+ maritalstatus + '&department2='+ department+'&adminprivileges2='+ adminprivileges;
+                // alert('dataString1');
+            
                     // AJAX Code To Submit Form.
                     $.ajax({
                         type: "POST",
@@ -672,22 +678,12 @@ $("#submitProject1").click(function(){
                         data: dataString1,
                         cache: true,
                         success: function(msg){
-                            
-                            if(result1==1){
-                                $("#tagcreate1").text(msg);
-                            }else{
-                                $("#tagcreate1").text(msg);
-                            }
+                            $("#tagcreate1").text(msg); 
                         }
                     });
-                    
-                }
-                return false;
             });
            
-        }
-        
-        );
-
-</script> 
+        });
+});
+</script>
 </html>
