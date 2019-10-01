@@ -419,7 +419,7 @@ header("location:login.php");
             <input type="password"  id="confirmpass" placeholder="Confirm password" class="form-control"  style="margin-left:60px"><br><br><br>
             <button  class="btn btn-success" type="submit" style="margin-left:120px" id="submit2">submit</button>
             <button class="btn btn-danger" style="margin-left:50px" id="cancels">Cancel</button>
-            <p style="color:rgb(153, 47, 153);font-size:0px;margin-left:0px;" id="tag"></p>
+            <p style="color:rgb(153, 47, 153);font-size:0px;margin-left:0px;" id="changepasswordConfirmation"></p>
         </div>        
     </form>
     <!-- end of change password -->
@@ -815,17 +815,18 @@ $('#changepassword').click(function() {
                 var currentpass = $("#currentpass").val();
                 var newpass = $("#newpass").val();
                 var confirmpass = $("#confirmpass").val();
-                var dataString2 = 'currentpass2='+ currentpass + '&newpass2='+ newpass + '&confirmpass2='+ confirmpass;
-                alert(dataString2);
+                var dataString5 = 'currentpass2='+ currentpass + '&newpass2='+ newpass + '&confirmpass2='+ confirmpass;
+               // var dataString2 = 'currentpass2='+ currentpass;
+               // alert(dataString2);
             
                     // AJAX Code To Submit Form.
                     $.ajax({
                         type: "POST",
                         url:"http://localhost/EmployeeManagement/accounts/changepassword.php",
-                        data: dataString2,
+                        data: dataString5,
                         cache: true,
                         success: function(msg){
-                            $("#tag").text(msg); 
+                            $("#changepasswordConfirmation").text(msg); 
                         }
                     });
             });
