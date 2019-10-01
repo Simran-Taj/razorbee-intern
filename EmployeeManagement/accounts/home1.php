@@ -347,10 +347,10 @@ header("location:login.php");
                 <input type="text"  id="designation" placeholder="Enter your Designation" class="form-control" style="margin-left:46px" required><br><br>
 
                 <label>Mobile No <span style="color:red">*</span>:</label>
-                <input type="number"  id="mobile" placeholder="Enter mobile number" class="form-control" style="margin-left:46px" value="" required>
+                <input type="text"  id="mobile" placeholder="Enter mobile number" class="form-control" style="margin-left:46px" value="" required>
 
                 <label style="margin-left:80px">Alternate Mob No <span style="color:red">*</span>:</label>
-                <input type="number"  id="alternatenumber" placeholder="Enter Alternate mob no" class="form-control"  style="margin-left:10px" ><br><br>
+                <input type="text"  id="alternatenumber" placeholder="Enter Alternate mob no" class="form-control"  style="margin-left:10px" ><br><br>
                  
          
                 <label>Date of Joining <span style="color:red">*</span>:</label>
@@ -358,34 +358,13 @@ header("location:login.php");
            
                 <label style="margin-left:80px">Date of Birth <span style="color:red">*</span>:</label>
                 <input type="text"  name="dop" id="dob" placeholder="Enter Date of Birth" class="form-control" style="margin-left:46px" required><br><br>
-           
-                <form>
-                    <label>Gender <span style="color:red">*</span>:</label>
-                    <input type="radio" id="male" name="gender" style="margin-left:60px" value="Male">male<input type="radio" name="gender" id="Female" style="margin-left:20px" value="Female">female<input type="radio" id="other" name="gender" style="margin-left:20px" value="Other">other
-                </form><br><br>
-                <form>
-                    <label>Marital Status <span style="color:red;">*</span>:</label>
-                    <input type="radio" id="maritalstatus" name="name" style="margin-left:10px" value="Single">Single<input type="radio" name="name" value="Married" style="margin-left:20px">Married<br><br>
-                </form>
 
                 <label>Qualification <span style="color:red">*</span>:</label>
-                <textarea type="text" id="qualification" placeholder="Enter Qualification" class="form-control" required rows="1" cols="105"></textarea>
-                <br><br>
-                <div>
-                <label>Present Address <span style="color:red">*</span>:</label><br>
-                <textarea type="text" id="presentaddress" placeholder="Enter Present Address" class="form-control" required rows="6" cols="50"></textarea>
-               </div>
-
-                <div style="margin-left:400px;margin-top:-160px">
-                <label style="">Permanent Address <span style="color:red">*</span>:</label><br>
-                <textarea type="text" id="permanentaddress" placeholder="Permanent Address" class="form-control" required rows="6" cols="50"></textarea><br><br>
-                </div>
-
-                <label>Nationality <span style="color:red"></span>:</label>
-                <input type="text" id="nationality"  placeholder="Indian" class="form-control" style="margin-left:40px" readonly>
-
+                <input type="text" style="margin-left:25px" id="qualification" placeholder="Enter Qualification" class="form-control" required rows="1" cols="105"></input>
+               
+               
                 <label style="margin-left:80px">Department <span style="color:red">*</span>:</label>
-                <select id="department" class="form-control" style="margin-left:75px">
+                <select id="department" class="form-control" style="margin-left:45px">
                     <option name="dept" value="select">Select the department</option>
                     <option name="dept" value="IT">IT</option>
                     <option name="dept" value="web development">WEb development</option>
@@ -393,13 +372,35 @@ header("location:login.php");
                     <option name="dept" value="Graphic designer">Graphic designer</option>
                     <option name="dept" value="Java development">Java development</option>
                 </select><br><br>
-                
+
+                <label>Nationality <span style="color:red"></span>:</label>
+                <input type="text" id="nationality" style="margin-left:45px" placeholder="Indian" class="form-control" style="margin-left:40px" readonly><br><br>
+               
+                <div>
+                <label>Present Address <span style="color:red">*</span>:</label><br>
+                <textarea type="text" id="presentaddress" placeholder="Enter Present Address" class="form-control" required rows="6" cols="50"></textarea>
+                </div>
+
+                <div style="margin-left:400px;margin-top:-160px">
+                <label style="">Permanent Address <span style="color:red">*</span>:</label><br>
+                <textarea type="text" id="permanentaddress" placeholder="Permanent Address" class="form-control" required rows="6" cols="50"></textarea><br><br>
+                </div>
+
+                <form>
+                    <label>Gender <span style="color:red">*</span>:</label>
+                    <input type="radio" id="male" name="gender" style="margin-left:70px" value="Male"><span style="margin-left:8px">male</span><input type="radio" name="gender" id="Female" style="margin-left:20px" value="Female"><span style="margin-left:8px">female</span><input type="radio" id="other" name="gender" style="margin-left:20px" value="Other"><span style="margin-left:8px">other</span>
+                </form><br><br>
+                <form>
+                    <label>Marital Status <span style="color:red;">*</span>:</label>
+                    <input type="radio" id="maritalstatus" name="name" style="margin-left:20px" value="Single"><span style="margin-left:8px">Single</span><input type="radio" name="name" value="Married" style="margin-left:20px"><span style="margin-left:8px">Married</span><br><br>
+                </form>
+
                 <label>Admin Privileges:</label>
-                <input type="checkbox" id="adminprivileges" name="admin" value="1"><br><br>
+                <input type="checkbox"style="margin-left:10px" id="adminprivileges" name="admin"><br><br>
 
                 <button type="submit" class="btn btn-success" type="button" id="submitProject1">create</button>
                 <button class="btn btn-danger" style="margin-left:50px" id="cancel">Cancel</button>
-                <span style="color:rgb(153, 47, 153);font-size:40px;margin-left:50px;" id="tagcreate1"></span> 
+                <span style="color:green;font-size:15px;margin-left:50px;" id="tagcreate1"></span> 
             </div>
         <div class="force-overflow"></div>
     </form >
@@ -416,7 +417,7 @@ header("location:login.php");
             <input type="password"  id="newpass" placeholder="Enter New password" class="form-control"  style="margin-left:90px" ><br><br>
             <label>Confirm Password:</label>
             <input type="password"  id="confirmpass" placeholder="Confirm password" class="form-control"  style="margin-left:60px"><br><br><br>
-            <button  class="btn btn-success" type="submit" id="submit2">submit</button>
+            <button  class="btn btn-success" type="submit" style="margin-left:120px" id="submit2">submit</button>
             <button class="btn btn-danger" style="margin-left:50px" id="cancels">Cancel</button>
             <p style="color:rgb(153, 47, 153);font-size:0px;margin-left:0px;" id="tag"></p>
         </div>        
@@ -434,7 +435,7 @@ header("location:login.php");
             <input type="text"  id="mnumber" placeholder="Enter Mobile Number" class="form-control"  style="margin-left:14px"><br><br>
             <label>Description:</label>
             <textarea type="text"  id="descript" placeholder="Description" class="form-control" cols="65" rows="6" style="margin-left:36px"></textarea><br><br><br>
-            <button  class="btn btn-success" type="submit" id="submit1">submit</button>
+            <button  class="btn btn-success" type="submit" style="margin-left:280px" id="submit1">submit</button>
             <p style="color:rgb(153, 47, 153);font-size:0px;margin-left:0px;" id="message"></p>
         </div>        
     </form>
@@ -624,6 +625,7 @@ header("location:login.php");
                 $('#attendancelogoutmessage').hide();
                 $('#viewtable').hide();
                 $('#admin').hide();
+                $('#changepassword1').hide();
             })
             $('#backToProject').on('click',function(){
                 $('#ProjectDetails').hide();
@@ -777,8 +779,11 @@ $('#addprofile').click(function() {
                 var permanentaddress = $("#permanentaddress").val();
                 var maritalstatus = $("input[name='name']:checked").val();
                 var department = $("option[name='dept']:selected").val();
-                var adminprivileges = $("input[name='admin']:checked").val();
-               
+                var adminprivileges = 0;
+                if($("input[name='admin']:checked").val()=="on"){
+                    adminprivileges=1;
+
+                }
                 var dataString1 = '&empname2='+ empname + '&empid2='+ empid + '&email2='+ email+ '&designation2='+ designation + 
                                   '&mobile2='+ mobile + '&alternatenumber2='+ alternatenumber + '&doj2='+ doj + '&dob2='+ dob
                                    + '&gender2='+ gender +'&presentaddress2='+ presentaddress +'&permanentaddress2='+ permanentaddress 
@@ -810,8 +815,8 @@ $('#changepassword').click(function() {
                 var currentpass = $("#currentpass").val();
                 var newpass = $("#newpass").val();
                 var confirmpass = $("#confirmpass").val();
-                var dataString2 = '&currentpass2='+ currentpass + '&newpass2='+ newpass + '&confirmpass2='+ confirmpass;
-                // alert( dataString2);
+                var dataString2 = 'currentpass2='+ currentpass + '&newpass2='+ newpass + '&confirmpass2='+ confirmpass;
+                alert(dataString2);
             
                     // AJAX Code To Submit Form.
                     $.ajax({
