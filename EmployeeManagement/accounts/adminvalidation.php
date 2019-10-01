@@ -3,7 +3,7 @@
  
     $conn = mysqli_connect('localhost','root','','employeemanagement');
 
-    $empname1 = "simran";
+    $empname1 = $_POST['empname2'];
     $empid1 = $_POST['empid2'];
     $email1 = $_POST['email2'];
     $designation1 = $_POST['designation2'];
@@ -20,7 +20,7 @@
     $adminprivileges1 = $_POST['adminprivileges2'];
 
     $query = "INSERT INTO employeemaster1 (`empname`, `empid`, `email`,`designation`,`mobile`, `alternatenumber`, `doj`,`dob`,`gender`,
-     `presentaddress`, `permanentaddress`,`maritalstatus`, `nationality`, `adminprivileges`,`department`)
+     `presentaddress`, `permanentaddress`,`maritalstatus`, `nationality`, `department`,`adminprivileges`)
          VALUES ('$empname1','$empid1','$email1','$designation1','$mobile1','$alternatenumber1','$doj1','$dob1',
          '$gender1','$presentaddress1','$permanentaddress1','$maritalstatus1','$nationality1','$department1','$adminprivileges1')";
      
@@ -32,10 +32,7 @@
      else
      {
      
-         echo "error while login"; 
-     }
-
-     return "$result1";
-    
+         echo "profile not created"; 
+     } 
        
 ?>

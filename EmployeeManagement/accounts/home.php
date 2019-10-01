@@ -35,9 +35,10 @@ header("location:login.php");
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
     <title>RazorBee Online Solutions</title>
 
@@ -110,9 +111,7 @@ header("location:login.php");
                     </ul>
                 </li>
                 
-            </ul>
-
-           
+            </ul> 
         </nav>
 
         <!-- Page Content  -->
@@ -156,7 +155,7 @@ header("location:login.php");
             <div>
                 
                 <form class="form-horizontal" id="formCreate2" method="POST" action="#" style="display: none;">
-                <div class="modal-body">
+                    <div class="modal-body" >
                              <h2 style="margin-top:-37px;margin-left:490px;color: rgb(153, 47, 153)">Attendance Sheet</h2><br>
                                     <table class="table table-bordered" id="t01" style="border:1px solid white;">
                                     
@@ -188,8 +187,8 @@ header("location:login.php");
                                                         echo "0 result";
                                                     }
                                                 ?>
-                                        </table>
-                                    </div>
+                                    </table>
+                    </div>
                 </form>
 
             </div>
@@ -254,11 +253,11 @@ header("location:login.php");
     </div>
 
 <!-- end -->
-<!-- project -->
+<!-- create project -->
             <div>
             
                 <form class="form-horizontal" id="formCreate" method="POST" action="#" style="display: none;"><br><br>
-                <h2 style="color:rgb(153, 47, 153);margin-top:-30px;margin-left:500px;">Create New Project</h1> <br>   
+                <h2 style="color:rgb(153, 47, 153);margin-top:-30px;margin-left:450px;">Create New Project</h1> <br>   
                  <div class="container" style="border-radius: 25px;border:1px solid black;"><br><br>
                 <b>Project Name:</b><br><br><input class="form-control" type="text" name="ProjectName" id="ProjectName" placeholder ="Enter project name">
                     <br><br>
@@ -306,11 +305,13 @@ header("location:login.php");
             <!-- view project -->
             <div class="container" id="projecttable" style="display: none;">
  
-            <h2 style="color:rgb(153, 47, 153);margin-top:-15px;margin-left:500px;">View Project</h1> <br>
+            <h2 style="color:rgb(153, 47, 153);margin-top:-15px;margin-left:480px;">View Project</h1> <br>
                             <table class="table table-bordered" id="t03" style="border:1px solid white;">
                 <thead>
                     <tr>
-                        <th style="width:50px">ID</th>
+                    <th style="position:fixed;">ID<span style="margin-left:20px">Project Name</span><span style="margin-left:100px">Client </span>
+                    </span><span style="margin-left:150px">Description </span></span><span style="margin-left:220px">Status </span><span style="margin-left:120px"></span></th>
+                        <!-- <th style="width:50px">ID</th> -->
                         <th style="width:200px">Project Name</th>
                         <th style="width:200px">Client</th>
                         <th style="width:300px">Description</th>
@@ -525,6 +526,7 @@ $('#login').click(function(e) {
             // $('#formCreate4').show();
             $('#attendanceloginmessage').text(msg);
             $('#login').attr("disabled", true);
+            $('#attendancelogoutmessage').attr("disabled", true);
         },
     });      
 }); 

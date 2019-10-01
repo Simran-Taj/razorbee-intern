@@ -9,14 +9,14 @@
         echo "$login";
         $IsAdmin= $user->IsAdmin($emailusername,$password);
 
-    if ($IsAdmin!=0) {
+    if ($IsAdmin==0) {
         //    ($user['status'] == '0');// check the value of the 'status' in the db
                 //go to admin area
                 header("Location: ../accounts/home.php");
         }
     else {
             if($login){
-                header("Location: ../accounts/home.php");
+                header("Location: ../accounts/home1.php");
             }
     else{
                 // Registration Failed
@@ -114,7 +114,7 @@
                     margin-top:70px;
                     font-size:15px;
                     margin-left:525px;
-                    /* background-color:rgb(215, 215, 215); */
+                   
                 }
                 .design{
                     margin-left:25px;
@@ -168,7 +168,7 @@
         <div>
             <img src="https://image.freepik.com/free-photo/pine-tree-evergreen-juniper-background-christmas-winter-wallpaper_3249-2723.jpg" style="width:100%; position:fixed; height:100%">   
                 <form action="" method="post" name="login">
-                    <div  class="box" style="">
+                    <div  class="box" >
                         <div class="design"><br>
                             <span style="margin-left: 150px; font-size:35px">Login</span><br><br>
                                 <form id="formdata" class="form-inline" action="home.php" method="POST">

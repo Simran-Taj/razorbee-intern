@@ -117,15 +117,29 @@ header("location:login.php");
                     </ul>
                 </li>
                 <li>
-                    <a href="#profilesubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin Page </a>
+                    <a href="#profilesubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profile </a>
                     <ul class="collapse list-unstyled" id="profilesubmenu">
                         <li>
-                            <a href="#" id="addprofile">Add Profile</a>
+                            <a href="#" id="addprofile">Add</a>
                         </li>
                         <li>
-                            <a href="#" id="viewprofile">View Profile</a>
-                        </li>   
+                            <a href="#" id="viewprofile">View</a>
+                        </li> 
+                        <li>
+                            <a href="#" id="changepassword">Change Password</a>
+                        </li>  
                         
+                    </ul>
+                </li>
+                <li>
+                    <a href="#salessubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sales Tracker </a>
+                    <ul class="collapse list-unstyled" id="salessubmenu">
+                        <li>
+                            <a href="#" id="addsalestracker">Add</a>
+                        </li>
+                        <li>
+                            <a href="#" id="viewsalestracker">View</a>
+                        </li> 
                     </ul>
                 </li>
             </ul> 
@@ -386,12 +400,67 @@ header("location:login.php");
                 <button type="submit" class="btn btn-success" type="button" id="submitProject1">create</button>
                 <button class="btn btn-danger" style="margin-left:50px" id="cancel">Cancel</button>
                 <span style="color:rgb(153, 47, 153);font-size:40px;margin-left:50px;" id="tagcreate1"></span> 
-                
-    
             </div>
         <div class="force-overflow"></div>
     </form >
-<!-- end of admin page -->
+    <!-- end of admin page -->
+
+    <!-- change password -->
+    <form  class="form-inline" id="changepassword1" method="POST" action="#" style="display: none;">
+    
+        <h2 style="color:rgb(153, 47, 153);margin-top:-450px;margin-left:430px;">Change Password</h1> <br>
+        <div class="container" style="border-radius: 25px;border:1px solid black;margin-left:320px;padding:20px;width:480px;"><br><br>
+            <label>Current Password:</label>
+            <input type="password"  id="currentpass" placeholder="Enter current password" class="form-control"  style="margin-left:65px" ><br><br>    
+            <label>New Password:</label>
+            <input type="password"  id="newpass" placeholder="Enter New password" class="form-control"  style="margin-left:90px" ><br><br>
+            <label>Confirm Password:</label>
+            <input type="password"  id="confirmpass" placeholder="Confirm password" class="form-control"  style="margin-left:60px"><br><br><br>
+            <button  class="btn btn-success" type="submit" id="submit2">submit</button>
+            <button class="btn btn-danger" style="margin-left:50px" id="cancels">Cancel</button>
+            <p style="color:rgb(153, 47, 153);font-size:0px;margin-left:0px;" id="tag"></p>
+        </div>        
+    </form>
+    <!-- end of change password -->
+
+    <!-- sales tracker -->
+    <form  class="form-inline" id="salestracker" method="POST" action="#" style="display: none;">
+    
+        <h2 style="color:rgb(153, 47, 153);margin-top:-450px;margin-left:430px;">Sales Tracker</h1> <br>
+        <div class="container" style="border-radius: 25px;border:1px solid black;margin-left:190px;padding:20px;width:680px;"><br><br>
+            <label>Client Name:</label>
+            <input type="text"  id="clientname" placeholder="Enter Client Name" class="form-control"  style="margin-left:35px"><br><br>    
+            <label>Mobile Number:</label>
+            <input type="text"  id="mnumber" placeholder="Enter Mobile Number" class="form-control"  style="margin-left:14px"><br><br>
+            <label>Description:</label>
+            <textarea type="text"  id="descript" placeholder="Description" class="form-control" cols="65" rows="6" style="margin-left:36px"></textarea><br><br><br>
+            <button  class="btn btn-success" type="submit" id="submit1">submit</button>
+            <p style="color:rgb(153, 47, 153);font-size:0px;margin-left:0px;" id="message"></p>
+        </div>        
+    </form>
+    <!-- end of sales tracker -->
+
+    <!-- view profile -->
+    <form  class="form-inline" id="viewtable" method="POST" action="#" style="display: none;margin-top:-400px">
+   
+   <?php
+     $conn = mysqli_connect('localhost','root','','employeemanagement');
+    // $sql="SELECT empname,empid FROM employeemaster1 order by name"; 
+    if($stmt = $conn->query("SELECT * from employeemaster1")){
+
+    echo "<select name='selects' id='selects' class='form-control' style='width:200px;margin-top:-100px'>";
+    while ($row = $stmt->fetch_assoc()) {
+    echo "<option value='options'>$row[empname]</option>";
+    }
+    echo "</select>";
+    }else{
+    echo $connection->error;
+    }
+  
+    ?>
+
+    </form>
+    <!-- end of view profile -->
     <!-- view project -->
             <div class="container" id="projecttable" style="display: none;">
  
@@ -460,6 +529,9 @@ header("location:login.php");
                 $('#attendanceloginmessage').hide();
                 $('#attendancelogoutmessage').hide();
                 $('#admin').hide();
+                $('#viewtable').hide();
+                $('#changepassword1').hide();
+                $('#salestracker').hide();
             })
             $('#createproject').on('click',function(){
                 $('#projecttable').hide();
@@ -470,6 +542,9 @@ header("location:login.php");
                 $('#attendanceloginmessage').hide();
                 $('#attendancelogoutmessage').hide();
                 $('#admin').hide();
+                $('#viewtable').hide();
+                $('#changepassword1').hide();
+                $('#salestracker').hide();
             })
             // timesheet
             $('#timesheet').on('click',function(){
@@ -481,6 +556,9 @@ header("location:login.php");
                 $('#attendanceloginmessage').hide();
                 $('#attendancelogoutmessage').hide();
                 $('#admin').hide();
+                $('#viewtable').hide();
+                $('#changepassword1').hide();
+                $('#salestracker').hide();
             })
             // attendance
             $('#viewattendance').on('click',function(){
@@ -492,7 +570,9 @@ header("location:login.php");
                 $('#attendanceloginmessage').hide();
                 $('#attendancelogoutmessage').hide();
                 $('#admin').hide();
-               
+                $('#viewtable').hide();
+                $('#changepassword1').hide();
+                $('#salestracker').hide();
             })
             // admin page
             $('#addprofile').on('click',function(){
@@ -503,13 +583,53 @@ header("location:login.php");
                 $('#admin').show();
                 $('#attendanceloginmessage').hide();
                 $('#attendancelogoutmessage').hide();
-               
+                $('#viewtable').hide();
+                $('#changepassword1').hide();
+                $('#salestracker').hide();
+            })
+            // view 
+            $('#viewprofile').on('click',function(){
+                $('#projecttable').hide();
+                $('#formCreate1').hide();
+                $('#ProjectDetails').hide();
+                $('#formCreate').hide();
+                $('#viewtable').show();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+                $('#changepassword1').hide();
+                $('#admin').hide();
+                $('#salestracker').hide();
+            })
+            // change password
+            $('#changepassword').on('click',function(){
+                $('#projecttable').hide();
+                $('#formCreate1').hide();
+                $('#ProjectDetails').hide();
+                $('#formCreate').hide();
+                $('#changepassword1').show();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+                $('#viewtable').hide();
+                $('#admin').hide();
+                $('#salestracker').hide();
+            })
+            // salestracker
+            $('#addsalestracker').on('click',function(){
+                $('#projecttable').hide();
+                $('#formCreate1').hide();
+                $('#ProjectDetails').hide();
+                $('#formCreate').hide();
+                $('#salestracker').show();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+                $('#viewtable').hide();
+                $('#admin').hide();
             })
             $('#backToProject').on('click',function(){
                 $('#ProjectDetails').hide();
                 $('#viewproject').click();
             })
-                       
+            
            $("#submitProject").click(function(){
                 var name = $("#ProjectName").val();
                 var client = $("#ClientName").val();
@@ -546,9 +666,7 @@ header("location:login.php");
                 return false;
             });
            
-        }
-        
-        );
+        });
 
         function showprojectdetails($detailsid){
             var func = "yes";
@@ -578,6 +696,7 @@ header("location:login.php");
     </script>
     
 <p id="tag"></p>
+
 </body>
 
 <!-- add task to database -->
@@ -588,25 +707,21 @@ header("location:login.php");
     $(document).ready(
             function(){
                  $("#submitbutton").click(
-                    function(a){
+                    function(e){
                        c = $("#taskdescription").val();
                        $(".modal").modal('hide');
                         $('#'+$taskid).val(c);
-                        
-                        a.stopImmediatePropagation();
+                        e.stopImmediatePropagation();
                         $.ajax({type: "POST",
                         url: "accounts/taskvalidation.php",
                         data: "task="+c,
                         cache: false,
                              success: function(result){
-                              
                              document.getElementById("taskdescription").value="";
                         }
                         });
-                    }
-                );
-            }
-        ) ;
+                    });
+           }) ;
 }
 </script>
 <!-- login post -->
@@ -640,9 +755,8 @@ $('#logout').click(function(e) {
         },
     });      
 }); 
-
-// add profile
 </script> 
+<!-- add profile -->
 <script>
  $(document).ready(function() {
 
@@ -686,4 +800,57 @@ $('#addprofile').click(function() {
         });
 });
 </script>
+<!-- change password -->
+<script>
+ $(document).ready(function() {
+$('#changepassword').click(function() {
+    $('#submit2').click(function(e){
+    e.preventDefault();
+ 
+                var currentpass = $("#currentpass").val();
+                var newpass = $("#newpass").val();
+                var confirmpass = $("#confirmpass").val();
+                var dataString2 = '&currentpass2='+ currentpass + '&newpass2='+ newpass + '&confirmpass2='+ confirmpass;
+                // alert( dataString2);
+            
+                    // AJAX Code To Submit Form.
+                    $.ajax({
+                        type: "POST",
+                        url:"http://localhost/EmployeeManagement/accounts/changepassword.php",
+                        data: dataString2,
+                        cache: true,
+                        success: function(msg){
+                            $("#tag").text(msg); 
+                        }
+                    });
+            });
+}); 
+ });
+// salestracker
+$('#addsalestracker').click(function() {
+    $('#submit1').click(function(e){
+    e.preventDefault();
+ 
+                var clientname = $("#clientname").val();
+                var mnumber = $("#mnumber").val();
+                var descript = $("#descript").val();
+                var dataString = '&clientname1='+ clientname + '&mnumber1='+ mnumber + '&descript1='+ descript;
+                // alert(dataString);
+            
+                    // AJAX Code To Submit Form.
+                    $.ajax({
+                        type: "POST",
+                        url:"http://localhost/EmployeeManagement/accounts/salestracker.php",
+                        data: dataString,
+                        cache: true,
+                        success: function(msg){
+                            $("#message").text(msg); 
+                        }
+                    });
+            });
+}); 
+ 
+
+</script>
+
 </html>
