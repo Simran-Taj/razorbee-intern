@@ -328,11 +328,11 @@ header("location:login.php");
 
                 </div>
             </form>
-    <!-- admin page -->
+    <!-- add profile -->
         
     <form  class="form-inline" id="admin" method="POST" action="#" style="display: none;">
         <h2 style="color:rgb(153, 47, 153);margin-top:-70px;margin-left:350px;">Add Profile</h1> <br>
-             <div class="scrollbar" id="style-1" >
+             <div class="scrollbar" class="style-1" >
 
                 <label>Emp Name <span style="color:red">*</span>:</label>
                 <input type="text" id="empname" name="name" placeholder="Enter your name" class="form-control" style="margin-left:40px" required>
@@ -405,63 +405,179 @@ header("location:login.php");
         <div class="force-overflow"></div>
     </form >
     <!-- end of admin page -->
+    <!-- view  profile -->
+        
+    <form  class="form-inline" id="admin1" method="POST" action="#" style="display: none;">
+        <h2 style="color:rgb(153, 47, 153);margin-top:-450px;margin-left:350px;">Add Profile</h1> <br>
+             <div class="scrollbar" class="style-1" >
+
+                <label>Emp Name <span style="color:red">*</span>:</label>
+                <input  id="empname1" name="name" placeholder="Enter your name" class="form-control" value="empname" style="margin-left:40px" required></input>
+
+                <label style="margin-left:80px">Emp Id <span style="color:red">*</span>:</label>
+                <input type="text" value="empid" id="empid1" placeholder="Enter your Id" class="form-control" style="margin-left:86px" required ><br><br>
+
+                <label>Email<span style="color:red">*</span>:</label>
+                <input type="text" value="email" id="email1" placeholder="Enter your Email" class="form-control" style="margin-left:80px" required>
+
+                <label style="margin-left:80px">Designation <span style="color:red">*</span>:</label>
+                <input type="text" value="designation" id="designation1" placeholder="Enter your Designation" class="form-control" style="margin-left:46px" required><br><br>
+
+                <label>Mobile No <span style="color:red">*</span>:</label>
+                <input type="text" value="mobile" id="mobile1" placeholder="Enter mobile number" class="form-control" style="margin-left:46px" value="" required>
+
+                <label style="margin-left:80px">Alternate Mob No <span style="color:red">*</span>:</label>
+                <input type="text" value="alternateno" id="alternatenumber1" placeholder="Enter Alternate mob no" class="form-control"  style="margin-left:10px" ><br><br>
+                 
+         
+                <label>Date of Joining <span style="color:red">*</span>:</label>
+                <input type="text" value="doj" id="doj1" placeholder="Enter Date of Joining" class="form-control" style="margin-left:10px" required>
+           
+                <label style="margin-left:80px">Date of Birth <span style="color:red">*</span>:</label>
+                <input type="text" value="dob" name="doj" id="dob1" placeholder="Enter Date of Birth" class="form-control" style="margin-left:46px" required><br><br>
+
+                <label>Qualification <span style="color:red">*</span>:</label>
+                <input type="text"  value="qualification" style="margin-left:25px" id="qualification1" placeholder="Enter Qualification" class="form-control" required ></input>
+               
+               
+                <label style="margin-left:80px">Department <span style="color:red">*</span>:</label>
+                <select id="department1" class="form-control" id="selector"  value="select" style="margin-left:45px">
+                    <option name="dept1" value="select">Select the department</option>
+                    <option name="dept1" value="IT">IT</option>
+                    <option name="dept1" value="web development">WEb development</option>
+                    <option name="dept1" value="testing">Testing</option>
+                    <option name="dept1" value="Graphic designer">Graphic designer</option>
+                    <option name="dept1" value="Java development">Java development</option>
+                </select><br><br>
+
+                <label>Nationality <span style="color:red"></span>:</label>
+                <input type="text" id="nationality1" style="margin-left:45px" placeholder="Indian" class="form-control" style="margin-left:40px" readonly><br><br>
+               
+                <div>
+                <label>Present Address <span style="color:red">*</span>:</label><br>
+                <textarea type="text"  value="presenttaddress" id="presentaddress1" placeholder="Enter Present Address" class="form-control" required rows="6" cols="50"></textarea>
+                </div>
+
+                <div style="margin-left:400px;margin-top:-160px">
+                <label style="">Permanent Address <span style="color:red">*</span>:</label><br>
+                <textarea type="text"  value="permanentaddress" id="permanentaddress1" placeholder="Permanent Address" class="form-control" required rows="6" cols="50"></textarea><br><br>
+                </div>
+
+                <form>
+                    <label>Gender <span style="color:red">*</span>:</label>
+                    <input type="radio"  id="male1" name="gender1" style="margin-left:70px" value="Male"><span style="margin-left:8px">male</span><input type="radio" name="gender1" id="Female1" style="margin-left:20px" value="Female"><span style="margin-left:8px">female</span><input type="radio" id="other1" name="gender1" style="margin-left:20px" value="Other"><span style="margin-left:8px">other</span>
+                </form><br><br>
+                <form>
+                    <label>Marital Status <span style="color:red;">*</span>:</label>
+                    <input type="radio" id="maritalstatus1" name="name1" style="margin-left:20px" value="Single"><span style="margin-left:8px">Single</span><input type="radio" name="name1" value="Married" style="margin-left:20px"><span style="margin-left:8px">Married</span><br><br>
+                </form>
+
+                <label>Admin Privileges:</label>
+                <input type="checkbox"style="margin-left:10px" id="adminprivileges1" name="admin1"><br><br>
+
+                <button type="button" class="btn btn-success" id="viewprofileofadmin">Update</button>
+                <button class="btn btn-danger" type="button" style="margin-left:50px" id="cancelfield">Cancel</button>
+                <span style="color:green;font-size:15px;margin-left:50px;" id="errortag"></span> 
+            </div>
+        <div class="force-overflow"></div>
+    </form>
 
     <!-- change password -->
     <form  class="form-inline" id="changepassword1" method="POST" action="#" style="display: none;">
     
-        <h2 style="color:rgb(153, 47, 153);margin-top:-450px;margin-left:430px;">Change Password</h1> <br>
-        <div class="container" style="border-radius: 25px;border:1px solid black;margin-left:320px;padding:20px;width:480px;"><br><br>
+        <h2 style="color:rgb(153, 47, 153);margin-top:-850px;margin-left:430px;">Change Password</h1> <br>
+        <div class="container" style="border-radius: 25px;border:1px solid black;margin-left:320px;padding:20px;width:480px;height:340px"><br><br>
             <label>Current Password:</label>
-            <input type="password"  id="currentpass" placeholder="Enter current password" class="form-control"  style="margin-left:65px" ><br><br>    
+            <input type="password"  id="currentpass" placeholder="Enter current password"  class="form-control" style="margin-left:65px"><br><br>    
             <label>New Password:</label>
-            <input type="password"  id="newpass" placeholder="Enter New password" class="form-control"  style="margin-left:90px" ><br><br>
+            <input type="password"  id="newpass" placeholder="Enter New password" class="form-control" style="margin-left:90px" ><br><br>
             <label>Confirm Password:</label>
-            <input type="password"  id="confirmpass" placeholder="Confirm password" class="form-control"  style="margin-left:60px"><br><br><br>
+            <input type="password"  id="confirmpass" placeholder="Confirm password" class="form-control" style="margin-left:60px"><br><br><br>
             <button  class="btn btn-success" type="submit" style="margin-left:120px" id="submit2">submit</button>
-            <button class="btn btn-danger" style="margin-left:50px" id="cancels">Cancel</button>
-            <p style="color:rgb(153, 47, 153);font-size:0px;margin-left:0px;" id="changepasswordConfirmation"></p>
-        </div>        
+            <button class="btn btn-success" type="button" style="margin-left:50px" id="cleartext">Clear</button><br><br>
+            <span style="color:green;font-size:15px;margin-left:120px;" id="tagcreate2"></span>  
+        </div>      
     </form>
     <!-- end of change password -->
-
-    <!-- sales tracker -->
+    <!-- sales tracker add-->
     <form  class="form-inline" id="salestracker" method="POST" action="#" style="display: none;">
     
-        <h2 style="color:rgb(153, 47, 153);margin-top:-450px;margin-left:430px;">Sales Tracker</h1> <br>
-        <div class="container" style="border-radius: 25px;border:1px solid black;margin-left:190px;padding:20px;width:680px;"><br><br>
+        <h2 style="color:rgb(153, 47, 153);margin-top:-900px;margin-left:430px;">Sales Tracker</h1> <br>
+        <div class="container" style="border-radius: 25px;border:1px solid black;margin-left:190px;padding:20px;width:680px;height:450px"><br><br>
             <label>Client Name:</label>
             <input type="text"  id="clientname" placeholder="Enter Client Name" class="form-control"  style="margin-left:35px"><br><br>    
             <label>Mobile Number:</label>
             <input type="text"  id="mnumber" placeholder="Enter Mobile Number" class="form-control"  style="margin-left:14px"><br><br>
             <label>Description:</label>
             <textarea type="text"  id="descript" placeholder="Description" class="form-control" cols="65" rows="6" style="margin-left:36px"></textarea><br><br><br>
-            <button  class="btn btn-success" type="submit" style="margin-left:280px" id="submit1">submit</button>
-            <p style="color:rgb(153, 47, 153);font-size:0px;margin-left:0px;" id="message"></p>
+            <button  class="btn btn-success" type="submit" style="margin-left:280px" id="submit1">submit</button><br><br>
+            <span style="color:green;font-size:15px;margin-left:200px;" id="tagcreate3"></span>  
         </div>        
     </form>
+    <!-- salestracker view -->
+<div class="container" id="salestracker1" style="display: none;">
+ 
+    <h2 style="color:rgb(153, 47, 153);margin-top:-900px;margin-left:460px;">Salestracker view</h1> <br>
+        <table class="table table-bordered" id="t04" style="border:1px solid black;">
+        <thead>
+         <tr>
+             <th style="width:50px">ID</th>
+             <!-- <th style="width:50px">ID</th> -->
+             <th style="width:150px">Client Name</th>
+             <th style="width:110px">Mobile</th>
+             <th style="width:250px">Description</th>
+             <th style="width:100px">Status</th>
+        
+         </tr>
+     </thead>
+     <tbody>
+     <tr>
+     <?php
+         $conn = mysqli_connect('localhost','root','','employeemanagement');
+         $result = mysqli_query($conn,"SELECT * FROM salestracker");
+         $detailsCnt = 0;
+         while($test = mysqli_fetch_array($result))
+         {
+             $id = $test['id']; 
+             echo"<td>".$test['id']."</td>";
+             echo"<td>".$test['name']."</td>";
+             echo"<td>".$test['mobile']."</td>";
+             echo"<td>".$test['description']."</td>"; 
+             echo"<td>".$test['status']."</td>"; 
+            //  $detailsCnt++;
+            //  echo "<td><button type=button class='btn btn-primary' id=details$detailsCnt onclick=showprojectdetails('details$detailsCnt')>Details</button></td>";
+             echo "</tr>";
+         }
+     
+     ?>
+     </table>
+ 
+ </div>
     <!-- end of sales tracker -->
 
-    <!-- view profile -->
-    <form  class="form-inline" id="viewtable" method="POST" action="#" style="display: none;margin-top:-400px">
+    <!-- add profile -->
+    <form  class="form-inline" id="viewtable" method="POST" action="#" style="display: none;margin-top:-900px">
    
    <?php
      $conn = mysqli_connect('localhost','root','','employeemanagement');
     // $sql="SELECT empname,empid FROM employeemaster1 order by name"; 
     if($stmt = $conn->query("SELECT * from employeemaster1")){
 
-    echo "<select name='selects' id='selects' class='form-control' style='width:200px;margin-top:-100px'>";
+    echo "<select name='selects' id='selects' class='form-control' style='width:200px;'>";
     while ($row = $stmt->fetch_assoc()) {
-    echo "<option value='options'>$row[empname]</option>";
+    echo "<option name='options' value='options'>$row[empname]</option>";
     }
     echo "</select>";
+    
     }else{
     echo $connection->error;
     }
-  
+    echo"<input type='button' id='viewprofilebutton' value='submit' style='margin-left:20px;'>";
     ?>
 
     </form>
-    <!-- end of view profile -->
+    <!-- end of add profile -->
+
     <!-- view project -->
             <div class="container" id="projecttable" style="display: none;">
  
@@ -503,6 +619,7 @@ header("location:login.php");
             
             </div>
         </div>
+        
     </div>
 
 
@@ -533,6 +650,8 @@ header("location:login.php");
                 $('#viewtable').hide();
                 $('#changepassword1').hide();
                 $('#salestracker').hide();
+                $('#admin1').hide();
+                $('#salestracker1').hide();
             })
             $('#createproject').on('click',function(){
                 $('#projecttable').hide();
@@ -546,6 +665,8 @@ header("location:login.php");
                 $('#viewtable').hide();
                 $('#changepassword1').hide();
                 $('#salestracker').hide();
+                $('#salestracker1').hide();
+                $('#admin1').hide();
             })
             // timesheet
             $('#timesheet').on('click',function(){
@@ -560,6 +681,8 @@ header("location:login.php");
                 $('#viewtable').hide();
                 $('#changepassword1').hide();
                 $('#salestracker').hide();
+                $('#salestracker1').hide();
+                $('#admin1').hide();
             })
             // attendance
             $('#viewattendance').on('click',function(){
@@ -574,6 +697,8 @@ header("location:login.php");
                 $('#viewtable').hide();
                 $('#changepassword1').hide();
                 $('#salestracker').hide();
+                $('#salestracker1').hide();
+                $('#admin1').hide();
             })
             // admin page
             $('#addprofile').on('click',function(){
@@ -587,6 +712,8 @@ header("location:login.php");
                 $('#viewtable').hide();
                 $('#changepassword1').hide();
                 $('#salestracker').hide();
+                $('#salestracker1').hide();
+                $('#admin1').hide();
             })
             // view 
             $('#viewprofile').on('click',function(){
@@ -595,11 +722,13 @@ header("location:login.php");
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
                 $('#viewtable').show();
+                $('#admin1').hide();
                 $('#attendanceloginmessage').hide();
                 $('#attendancelogoutmessage').hide();
                 $('#changepassword1').hide();
                 $('#admin').hide();
                 $('#salestracker').hide();
+                $('#salestracker1').hide();
             })
             // change password
             $('#changepassword').on('click',function(){
@@ -613,6 +742,8 @@ header("location:login.php");
                 $('#viewtable').hide();
                 $('#admin').hide();
                 $('#salestracker').hide();
+                $('#salestracker1').hide();
+                $('#admin1').hide();
             })
             // salestracker
             $('#addsalestracker').on('click',function(){
@@ -626,10 +757,109 @@ header("location:login.php");
                 $('#viewtable').hide();
                 $('#admin').hide();
                 $('#changepassword1').hide();
+                $('#salestracker1').hide();
+                $('#admin1').hide();
+            })
+            // vsales tracker view
+            $('#viewsalestracker').on('click',function(){
+                $('#projecttable').hide();
+                $('#formCreate1').hide();
+                $('#ProjectDetails').hide();
+                $('#formCreate').hide();
+                $('#salestracker1').show();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+                $('#viewtable').hide();
+                $('#admin').hide();
+                $('#changepassword1').hide();
+                $('#salestracker').hide();
+                $('#admin1').hide();
+            })
+            // selecting of name from profile
+          
+            // update profile
+            $('#viewprofileofadmin').on('click',function(){
+                var empname1 = $("#empname1").val();
+                var empid1 = $("#empid1").val();
+                var email1 = $("#email1").val();
+                var designation1 = $("#designation1").val();
+                var mobile1 = $("#mobile1").val();
+                var alternatenumber1 = $("#alternatenumber1").val();
+                var doj1 = $("#doj1").val();
+                var dob1 = $("#dob1").val();
+                var qualification1 = $("#qualification1").val();
+                var gender1 = $("input[name='gender1']:checked").val();
+                var presentaddress1 = $("#presentaddress1").val();
+                var permanentaddress1 = $("#permanentaddress1").val();
+                var maritalstatus1 = $("input[name='name1']:checked").val();
+                var department1 = $("option[name='dept1']:selected").val();
+                var adminprivileges1 = 0;
+                if($("input[name='admin1']:checked").val()=="on"){
+                    adminprivileges=1;
+                }
+                var dataString2 = '&empname1='+ empname1 + '&empid1='+ empid1 + '&email1='+ email1 + '&designation1='+ designation1 + 
+                                  '&mobile1='+ mobile1 + '&alternatenumber1='+ alternatenumber11 + '&doj1='+ doj1 + '&dob1='+ dob1 + '&qualification1='+ qualification1
+                                   + '&gender1='+ gender1 +'&presentaddress1='+ presentaddress1 +'&permanentaddress1='+ permanentaddress1 
+                                   + '&maritalstatus1='+ maritalstatus1 + '&department1='+ department1 +'&adminprivileges1='+ adminprivileges1;
+                    alert(dataString2);
+                    $.ajax({
+                        type:"POST",
+                        url:"http://localhost/EmployeeManagement/accounts/updateprofile.php",
+                        data: dataString2,
+                        cache: true,
+                        success: function(msg){
+                            $("#errortag").text(msg); 
+                        }
+                    });
+                });
+            
+            // view profile
+            $('#viewprofilebutton').on('click',function(){
+                $('#admin1').show();
+                $('#projecttable').hide();
+                $('#formCreate1').hide();
+                $('#ProjectDetails').hide();
+                $('#formCreate').hide();
+                $('#salestracker1').hide();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+                $('#viewtable').hide();
+                $('#admin').hide();
+                $('#changepassword1').hide();
+                $('#salestracker').hide();
+                $.ajax({
+                        type: 'POST',
+                        datatype: "json",
+                        url:"http://localhost/EmployeeManagement/accounts/viewprofile.php",
+                   
+                        success: function(msg){
+                             var res = $.parseJSON(msg);
+                            $("#empname1").val(res.empname).css('color','black');
+                            $("#empid1").val(res.id).css('color','black');
+                            $("#email1").val(res.email).css('color','black');
+                            $("#designation1").val(res.designation).css('color','black');
+                            $("#mobile1").val(res.mobile).css('color','black');
+                            $("#alternatenumber1").val(res.alternatenumber).css('color','black');
+                            $("#doj1").val(res.doj).css('color','black');
+                            $("#dob1").val(res.dob).css('color','black');
+                            $("#qualification1").val(res.qualification).css('color','black');
+                            $('input[name=gender1][value='+res.gender+']').prop('checked',true);
+                            $('input[name=name1][value='+res.maritalstatus+']').prop('checked',true);
+                            $("#presentaddress1").val(res.presentaddress).css('color','black');
+                            $("#permanentaddress1").val(res.permanentaddress).css('color','black');
+                            $('option[name=dept1][value='+res.department+']').prop('selected',true);
+                            $('input[name=admin1][value='+res.adminprivileges+']').prop('checked',true);
+                        }
+                    });
             })
             $('#backToProject').on('click',function(){
                 $('#ProjectDetails').hide();
                 $('#viewproject').click();
+            })
+            $('#cleartext').on('click',function(){
+                $('#currentpass').val('');
+                $('#newpass').val('');
+                $('#confirmpass').val('');
             })
             
            $("#submitProject").click(function(){
@@ -663,7 +893,6 @@ header("location:login.php");
                             }
                         }
                     });
-                    
                 }
                 return false;
             });
@@ -774,6 +1003,7 @@ $('#addprofile').click(function() {
                 var alternatenumber = $("#alternatenumber").val();
                 var doj = $("#doj").val();
                 var dob = $("#dob").val();
+                var qualification = $("#qualification").val();
                 var gender = $("input[name='gender']:checked").val();
                 var presentaddress = $("#presentaddress").val();
                 var permanentaddress = $("#permanentaddress").val();
@@ -782,14 +1012,11 @@ $('#addprofile').click(function() {
                 var adminprivileges = 0;
                 if($("input[name='admin']:checked").val()=="on"){
                     adminprivileges=1;
-
                 }
                 var dataString1 = '&empname2='+ empname + '&empid2='+ empid + '&email2='+ email+ '&designation2='+ designation + 
-                                  '&mobile2='+ mobile + '&alternatenumber2='+ alternatenumber + '&doj2='+ doj + '&dob2='+ dob
+                                  '&mobile2='+ mobile + '&alternatenumber2='+ alternatenumber + '&doj2='+ doj + '&dob2='+ dob+ '&qualification2='+ qualification
                                    + '&gender2='+ gender +'&presentaddress2='+ presentaddress +'&permanentaddress2='+ permanentaddress 
                                    + '&maritalstatus2='+ maritalstatus + '&department2='+ department+'&adminprivileges2='+ adminprivileges;
-                // alert('dataString1');
-            
                     // AJAX Code To Submit Form.
                     $.ajax({
                         type: "POST",
@@ -815,20 +1042,54 @@ $('#changepassword').click(function() {
                 var currentpass = $("#currentpass").val();
                 var newpass = $("#newpass").val();
                 var confirmpass = $("#confirmpass").val();
-                var dataString5 = 'currentpass2='+ currentpass + '&newpass2='+ newpass + '&confirmpass2='+ confirmpass;
-               // var dataString2 = 'currentpass2='+ currentpass;
-               // alert(dataString2);
-            
-                    // AJAX Code To Submit Form.
+                var check = true;
+                var errormessage="";
+                if(currentpass=="" && newpass=="" && confirmpass==""){
+                    errormessage = "please fill in the details";
+                    $("#tagcreate2").text(errormessage).css('color','red');
+                    check=false;
+                }else{
+                    if(currentpass==""){
+                        check=false;
+                        errormessage="Please enter current password"; 
+                        $("#tagcreate2").text(errormessage).css('color','red');
+                        exit();
+                    }
+                    if(newpass==""){
+                        check=false;
+                        errormessage="Please enter new password"; 
+                        $("#tagcreate2").text(errormessage).css('color','red');
+                        exit();
+                    }
+                    if(confirmpass==""){
+                        check=false;
+                        errormessage="Please enter confirm password"; 
+                        $("#tagcreate2").text(errormessage).css('color','red');
+                        exit();
+                    }
+                } 
+                
+                
+                if(check==false){
+                    $("#tagcreate2").text(errormessage).css('color','red');
+                }else{
+                    var dataString5 = 'currentpass2='+ currentpass + '&newpass2='+ newpass + '&confirmpass2='+ confirmpass;
+                   // AJAX Code To Submit Form.
                     $.ajax({
                         type: "POST",
                         url:"http://localhost/EmployeeManagement/accounts/changepassword.php",
                         data: dataString5,
                         cache: true,
                         success: function(msg){
-                            $("#changepasswordConfirmation").text(msg); 
+                            if(msg=="password updated successfully"){
+                                $("#tagcreate2").text(msg); 
+                            }else{
+                                $("#tagcreate2").text(msg).css('color','red');
+                            }
+                          
                         }
                     });
+                } 
             });
 }); 
  });
@@ -850,13 +1111,11 @@ $('#addsalestracker').click(function() {
                         data: dataString,
                         cache: true,
                         success: function(msg){
-                            $("#message").text(msg); 
+                            $("#tagcreate3").text(msg); 
                         }
                     });
             });
 }); 
- 
-
 </script>
 
 </html>

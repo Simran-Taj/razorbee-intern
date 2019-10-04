@@ -14,7 +14,7 @@
  if(mysqli_query($conn,$query))
  {
      
-     echo "profile created successfully";
+    echo "profile created successfully";
  }
  else
  {
