@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include_once '../class.user.php';
 $user = new User(); 
@@ -150,12 +149,6 @@ header("location:login.php");
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-
-                    <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button> -->
-                   
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
@@ -184,10 +177,10 @@ header("location:login.php");
                 
                 <form class="form-horizontal" id="formCreate2" method="POST" action="#" style="display: none;">
                     <div class="modal-body" >
-                             <h2 style="margin-top:-37px;margin-left:490px;color: rgb(153, 47, 153)">Attendance Sheet</h2><br>
-                                    <table class="table table-bordered" id="t01" style="border:1px solid white;">
+                        <h2 style="margin-top:-37px;margin-left:490px;color: rgb(153, 47, 153)">Attendance Sheet</h2><br>
+                            <table class="table table-bordered" id="t01" style="border:1px solid white;">
                                     
-                                            <tr>
+                                <tr>
                                                 <!-- <th style="" >EmpId</th> -->
                                                 <!-- <th style="width:200px">Date</th>
                                                 <th style="width:200px">Time</th>
@@ -225,8 +218,8 @@ header("location:login.php");
             <div>
                 
                 <form class="form-horizontal" id="formCreate1" method="POST" action="#" style="display: none;">
-                <div class="modal-body"><br>
-                <h2 style="color:rgb(153, 47, 153);margin-top:-45px;margin-left:500px;">Time Sheet</h1> 
+                <div class="modal-body" style="margin-left:300px"><br>
+                <h2 style="color:rgb(153, 47, 153);margin-top:-45px;margin-left:220px;">Time Sheet</h1> 
                             <table class="table table-bordered" id="t02" style="border:1px solid white;">
                             <tr>
                                 <!-- <th style="width:150px;">Date</th>
@@ -241,21 +234,19 @@ header("location:login.php");
                                     $date = date("Y-m"). "-01"; //change the date -   (current date minus 15 days)
                                     $end_date = date("Y-m-d");
                                     $task=0;
-                                    while (strtotime($date) <= strtotime($end_date)) 
+                                    while(strtotime($date) <= strtotime($end_date)) 
                                     {
                                         echo "<tr>" ."<td>" . "$date" ."</td>" ;
                                         $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
                                         $task++; 
-                                        echo "<td><textarea id=task$task></textarea>"."</td>";
+                                        echo "<td><textarea id=task$task cols=45 rows=3></textarea>"."</td>";
                                         echo "<td>"."<button id=addtask$task type=button class=btn btn-primary btn-lg data-toggle=modal onclick=save('task$task') data-target=#myModal3>Add task</button>"."</td>"."</tr>"."</tr>";
                                     }    
                                 ?>
                             </tr>
                         </table>
-                                                
                     </div>
                 </form>
-
             </div>
             <!-- end -->
     <!-- add task modal -->
@@ -317,12 +308,10 @@ header("location:login.php");
                         $result = mysqli_query($conn,"SELECT * FROM `projectcomments` WHERE projectid=1");
                         $detailsCnt = 0;
                         while($test = mysqli_fetch_array($result))
-                        {
-                            
+                        {                            
                             echo"<p>".$test['projectid']."</p>";
                             echo"<p>".$test['empname']."</p>";
-                            echo"<p>".$test['comment']."</p><hr>";
-                            
+                            echo"<p>".$test['comment']."</p><hr>";                            
                         }
                     ?>
 
@@ -547,8 +536,7 @@ header("location:login.php");
             //  $detailsCnt++;
             //  echo "<td><button type=button class='btn btn-primary' id=details$detailsCnt onclick=showprojectdetails('details$detailsCnt')>Details</button></td>";
              echo "</tr>";
-         }
-     
+         }    
      ?>
      </table>
  
@@ -581,7 +569,7 @@ header("location:login.php");
     <!-- view project -->
             <div class="container" id="projecttable" style="display: none;">
  
-            <h2 style="color:rgb(153, 47, 153);margin-top:-470px;margin-left:480px;">View Project</h1> <br>
+            <h2 style="color:rgb(153, 47, 153);margin-top:-870px;margin-left:480px;">View Project</h1> <br>
                 <table class="table table-bordered" id="t03" style="border:1px solid white;">
                 <thead>
                     <tr>
@@ -612,16 +600,12 @@ header("location:login.php");
                         $detailsCnt++;
                         echo "<td><button type=button class='btn btn-primary' id=details$detailsCnt onclick=showprojectdetails('details$detailsCnt')>Details</button></td>";
                         echo "</tr>";
-                    }
-                
+                    }               
                 ?>
-                </table>
-            
+                </table>           
             </div>
-        </div>
-        
+        </div>        
     </div>
-
 
    <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
