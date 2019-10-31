@@ -102,7 +102,18 @@ header("location:login.php");
                         </li>
                     </ul>
                 </li>
-
+                <li>
+                    <a href="#tasksub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Task Management</a>
+                    <ul class="collapse list-unstyled" id="tasksub">
+                        <li>
+                            <a href="#" id="taskCreate">Create</a>
+                        </li>
+                        
+                        <li>
+                            <a href="#" id="formTaskview">View</a>
+                        </li>
+                    </ul>
+                </li>
                 <li>
                     <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Project Management</a>
                     <ul class="collapse list-unstyled" id="projectSubmenu">
@@ -239,8 +250,8 @@ header("location:login.php");
                                         echo "<tr>" ."<td>" . "$date" ."</td>" ;
                                         $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
                                         $task++; 
-                                        echo "<td><textarea id=task$task cols=45 rows=3></textarea>"."</td>";
-                                        echo "<td>"."<button id=addtask$task type=button class=btn btn-primary btn-lg data-toggle=modal onclick=save('task$task') data-target=#myModal3>Add task</button>"."</td>"."</tr>"."</tr>";
+                                        echo "<td><textarea id=task$task readonly></textarea>"."</td>";
+                                        echo "<td>"."<button  id=addtask$task type=button class=btn btn-primary btn-lg data-toggle=modal onclick=save('task$task') data-target=#myModal3>Add task</button>"."</td>"."</tr>"."</tr>";
                                     }    
                                 ?>
                             </tr>
@@ -272,6 +283,86 @@ header("location:login.php");
     </div>
 
     <!-- end -->
+    <!-- Create task-->
+    <?php
+
+// php select option value from database
+
+$conn = mysqli_connect('localhost','root','','employeemanagement');
+
+$query = "SELECT * FROM `employeemaster`";
+
+$result1 = mysqli_query($conn, $query);
+?>
+    <div>
+                <form class="form-horizontal" id="formTask" method="POST" action="taskcreate.php" style="display: none;"><br><br>
+                <h2 style="color:rgb(153, 47, 153);margin-top:-30px;margin-left:450px;">Create New Task</h1> <br>   
+                 <div class="container" style="border-radius: 25px;border:1px solid black;"><br><br>
+                <b>Assigneed to:</b>
+                <select name="assignee">
+               <?php while($row = mysqli_fetch_array($result1)):;?>
+               <option  selected="selected" name="assignees" value="<?php echo $row[2];?>"><?php echo $row[2];?></option>
+
+<?php endwhile;?>
+                </select>
+                    <br><br>
+                  
+                    <b>Description:</b><br>
+                    <br>
+                    <textarea class="form-control" name="description" id="description" placeholder ="Enter Description"></textarea>
+                    <br><br>
+                    <b>Status</b>: <span name="status" value="open">open</span>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary" type="button" id="submitTask">Submit</button>
+                    <button type="reset" class="btn btn-danger waves-effect waves-light" onclick="window.history.back();">Cancel</button>
+                    <p id="tagcreate" ></p><br>
+                                </div>
+                </form>              
+            </div>
+
+<!--end-->
+<!-- view task-->
+ <div>
+                
+                <form class="form-horizontal" id="formTaskviews" method="POST" action="#" style="display: none;">
+                    <div class="modal-body" >
+                        <h2 style="margin-top:-37px;margin-left:490px;color: rgb(153, 47, 153)">View Task</h2><br>
+                            <table class="table table-bordered" id="t01" style="border:1px solid white;width:40%;">
+                                    
+                                <tr>
+                                                <!-- <th style="" >EmpId</th> -->
+                                                <!-- <th style="width:200px">Date</th>
+                                                <th style="width:200px">Time</th>
+                                                <th style="width:200px">Type</th> -->
+                                                <th>Task</th>
+                                                <th>Status</th>
+                                                <th>Comments</th>
+                                            <tr>
+                                                <?php
+                                                
+                                                    $con = mysqli_connect('localhost','root','','employeemanagement');
+                                                    $sql = 'SELECT assignee,description FROM newtask';
+                                                    $result = $con->query($sql);
+                                                    
+                                                    if ($result->num_rows > 0) 
+                                                    {
+                                                        while($row = $result->fetch_assoc()) 
+                                                        {
+                                                             echo "<tr><td>". $row["assignee"] ."</td><td>". $row["description"] ."</td><td>"."<input type=text>"."</td></tr>";
+                                                        }
+                                                        echo "</table>";
+                                                    } 
+                                                    else 
+                                                    {
+                                                        echo "0 result";
+                                                    }
+                                                ?>
+                                    </table>
+                    </div>
+                </form>
+
+            </div>
+            <!--end-->
     <!-- create project -->
             <div>
                 <form class="form-horizontal" id="formCreate" method="POST" action="#" style="display: none;"><br><br>
@@ -636,6 +727,8 @@ header("location:login.php");
                 $('#salestracker').hide();
                 $('#admin1').hide();
                 $('#salestracker1').hide();
+                $('#formTaskviews').hide();
+                $('#formTask').hide();
             })
             $('#createproject').on('click',function(){
                 $('#projecttable').hide();
@@ -651,6 +744,8 @@ header("location:login.php");
                 $('#salestracker').hide();
                 $('#salestracker1').hide();
                 $('#admin1').hide();
+                $('#formTaskviews').hide();
+                $('#formTask').hide();
             })
             // timesheet
             $('#timesheet').on('click',function(){
@@ -667,11 +762,12 @@ header("location:login.php");
                 $('#salestracker').hide();
                 $('#salestracker1').hide();
                 $('#admin1').hide();
+                $('#formTaskviews').hide();
+                $('#formTask').hide();
             })
-            // attendance
             $('#viewattendance').on('click',function(){
-                $('#projecttable').hide();
                 $('#formCreate1').hide();
+                $('#projecttable').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
                 $('#formCreate2').show();
@@ -683,7 +779,43 @@ header("location:login.php");
                 $('#salestracker').hide();
                 $('#salestracker1').hide();
                 $('#admin1').hide();
+                $('#formTaskviews').hide();
+                $('#formTask').hide();
             })
+            // attendance
+            $('#taskCreate').on('click',function(){
+                $('#projecttable').hide();
+                $('#formCreate1').hide();
+                $('#ProjectDetails').hide();
+                $('#formCreate').hide();
+                $('#formCreate2').hide();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+                $('#admin').hide();
+                $('#formTask').show();
+                $('#viewtable').hide();
+                $('#changepassword1').hide();
+                $('#salestracker').hide();
+                $('#salestracker1').hide();
+                $('#admin1').hide();
+                $('#formTaskviews').hide();
+           
+            })
+            // $('#timesheet').on('click',function(){
+            //     $('#formCreate1').show();
+            //     $('#projecttable').hide();
+            //     $('#ProjectDetails').hide();
+            //     $('#formCreate').hide();
+            //     $('#formCreate2').hide();
+            //     $('#attendanceloginmessage').hide();
+            //     $('#attendancelogoutmessage').hide();
+            //     $('#admin').hide();
+            //     $('#viewtable').hide();
+            //     $('#changepassword1').hide();
+            //     $('#salestracker').hide();
+            //     $('#salestracker1').hide();
+            //     $('#admin1').hide();
+            // })
             // admin page
             $('#addprofile').on('click',function(){
                 $('#projecttable').hide();
@@ -698,6 +830,8 @@ header("location:login.php");
                 $('#salestracker').hide();
                 $('#salestracker1').hide();
                 $('#admin1').hide();
+                $('#formTaskviews').hide();
+                $('#formTask').hide();
             })
             // view 
             $('#viewprofile').on('click',function(){
@@ -713,6 +847,8 @@ header("location:login.php");
                 $('#admin').hide();
                 $('#salestracker').hide();
                 $('#salestracker1').hide();
+                $('#formTaskviews').hide();
+                $('#formTask').hide();
             })
             // change password
             $('#changepassword').on('click',function(){
@@ -728,6 +864,8 @@ header("location:login.php");
                 $('#salestracker').hide();
                 $('#salestracker1').hide();
                 $('#admin1').hide();
+                $('#formTaskviews').hide();
+                $('#formTask').hide();
             })
             // salestracker
             $('#addsalestracker').on('click',function(){
@@ -743,7 +881,29 @@ header("location:login.php");
                 $('#changepassword1').hide();
                 $('#salestracker1').hide();
                 $('#admin1').hide();
+                $('#formTaskviews').hide();
+                $('#formTask').hide();
             })
+
+     
+            $('#formTaskview').on('click',function(){
+                $('#projecttable').hide();
+                $('#formCreate1').hide();
+                $('#ProjectDetails').hide();
+                $('#formCreate').hide();
+                $('#formTask').hide();
+                $('#salestracker').hide();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+                $('#viewtable').hide();
+                $('#admin').hide();
+                $('#changepassword1').hide();
+                $('#salestracker1').hide();
+                $('#admin1').hide();
+                $('#formTaskviews').show();
+                
+                })
+
             // vsales tracker view
             $('#viewsalestracker').on('click',function(){
                 $('#projecttable').hide();
@@ -758,6 +918,8 @@ header("location:login.php");
                 $('#changepassword1').hide();
                 $('#salestracker').hide();
                 $('#admin1').hide();
+                $('#formTaskviews').hide();
+                $('#formTask').hide();
             })
             // selecting of name from profile
           
@@ -940,6 +1102,36 @@ header("location:login.php");
 }
 </script>
 <!-- login post -->
+<script>
+ 
+    
+    $(document).ready(
+            function(){
+                 $("#submitTask").click(
+                    function(e){
+                        var myform = document.getElementById("formTask");
+           var data = new FormData(myform);
+                       c = $("#description").val();
+                    //    $(".modal").modal('hide');
+                    //     $('#'+$taskid).val(c);
+                        
+                        e.preventDefault();
+                        $.ajax({type: "POST",
+                            contentType: false,
+                  
+                    processData:false,    
+                        url: "taskcreate.php",
+                        data: data,
+                        cache: false,
+                             success: function(result){
+                             document.getElementById("formTask").reset();
+                             alert("task is successfully updated");
+                        }
+                        });
+                    });
+           }) ;
+
+</script>
 <script>
 $('#login').click(function(e) {
     e.preventDefault();
