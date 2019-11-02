@@ -2,10 +2,10 @@
      $conn = mysqli_connect('localhost','root','','employeemanagement');
      $assignee= $_POST['assignee'];
      $description= $_POST['description'];
-     $status="open";
-     echo $status;
+     $status_id="open";
+     echo $status_id;
 
-     $query = "INSERT INTO newtask (assignee,description,status) VALUES ('$assignee','$description','open')";
+     $query = "INSERT INTO newtask (assignee,description,status_id) VALUES ('$assignee','$description','open')";
      if(mysqli_query($conn,$query))
         {
             echo "inserted";
