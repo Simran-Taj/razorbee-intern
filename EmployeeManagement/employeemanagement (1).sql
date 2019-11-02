@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2019 at 02:06 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Nov 02, 2019 at 02:17 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -87,6 +87,27 @@ INSERT INTO `employeemaster1` (`id`, `empname`, `empid`, `email`, `designation`,
 (1, 'Ashwak', 'RB001', 'ashwak@razorbee.com', 'Director', 2147483647, 2147483647, '12-02-2019', '13-12-2019', 'Male', 'singasandra', 'bangalore', 'Married', 'indian', 'IT', '1'),
 (2, 'simran', 'rb003', 'simran@razorbee.com', 'employee', 2147483647, 2147483647, '12-06-2019', '08-03-1997', 'Female', 'singasandra', 'periyapatna', 'Single', 'indian', 'web development', 'undefined'),
 (6, 'qsa', '', '', '', 0, 0, '', '', 'undefined', '', '', 'undefined', 'indian', 'select', 'undefined');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newtask`
+--
+
+CREATE TABLE `newtask` (
+  `id` int(100) NOT NULL,
+  `assignee` varchar(100) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `status_id` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `newtask`
+--
+
+INSERT INTO `newtask` (`id`, `assignee`, `description`, `status_id`) VALUES
+(1, 'Priya', 'Homeopathy', 'open'),
+(2, 'Sindhu', 'testing', 'open');
 
 -- --------------------------------------------------------
 
@@ -199,6 +220,31 @@ INSERT INTO `signup` (`id`, `empid`, `emailid`, `pass`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `statusmaster`
+--
+
+CREATE TABLE `statusmaster` (
+  `id` int(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `status_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `statusmaster`
+--
+
+INSERT INTO `statusmaster` (`id`, `status`, `status_id`) VALUES
+(1, 'new', 0),
+(2, 'open', 0),
+(3, 'In-progress', 0),
+(4, 'Invalid', 0),
+(5, 'closed', 0),
+(6, 'Reopen', 0),
+(7, 'Differed', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `taskmanagement`
 --
 
@@ -216,7 +262,48 @@ CREATE TABLE `taskmanagement` (
 INSERT INTO `taskmanagement` (`id`, `empid`, `date`, `task`) VALUES
 (1, 'RB004', '2019-09-23', 'Today i have done task management module and view attendance'),
 (2, 'RB006', '2019-09-23', 'todays task'),
-(3, 'RB006', '2019-09-23', 'this is to infor');
+(3, 'RB006', '2019-09-23', 'this is to infor'),
+(4, 'RB002', '2019-10-22', 'ftyhfrt'),
+(5, 'RB002', '2019-10-22', 'done'),
+(6, 'RB002', '2019-10-22', 'completed'),
+(7, 'RB002', '2019-10-22', 'h'),
+(8, 'RB002', '2019-10-22', 'jjj'),
+(9, 'RB002', '2019-10-22', 'kk'),
+(10, 'RB002', '2019-10-22', 'shd'),
+(11, 'RB002', '2019-10-22', 'ff'),
+(12, 'RB002', '2019-10-22', 'f'),
+(13, 'RB002', '2019-10-22', 'ff'),
+(14, 'RB002', '2019-10-22', 'ss'),
+(15, 'RB002', '2019-10-29', 'ff'),
+(16, 'RB002', '2019-10-29', 'xx'),
+(17, 'RB002', '2019-10-29', 'cc'),
+(18, 'RB002', '2019-10-29', 'x'),
+(19, 'RB002', '2019-10-29', 'x'),
+(20, 'RB002', '2019-10-29', 'hu'),
+(21, 'RB002', '2019-10-29', 'uyu'),
+(22, 'RB002', '2019-10-29', 'rer'),
+(23, 'RB002', '2019-10-29', 'ere'),
+(24, 'RB002', '2019-10-29', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tasktable`
+--
+
+CREATE TABLE `tasktable` (
+  `id` int(100) NOT NULL,
+  `empid` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `task` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tasktable`
+--
+
+INSERT INTO `tasktable` (`id`, `empid`, `date`, `task`) VALUES
+(1, '', '0000-00-00', 'erwer');
 
 -- --------------------------------------------------------
 
@@ -249,7 +336,16 @@ INSERT INTO `tblattendance` (`id`, `empid`, `date`, `time`, `type`) VALUES
 (50, 'RB004', '2019-09-27', '12:26:32', 'logout'),
 (56, 'RB001', '2019-09-30', '18:32:15', 'login'),
 (57, 'RB001', '2019-09-30', '18:32:21', 'logout'),
-(58, 'RB001', '2019-10-01', '10:52:48', 'login');
+(58, 'RB001', '2019-10-01', '10:52:48', 'login'),
+(59, 'RB002', '2019-10-22', '18:22:25', 'login'),
+(60, 'RB002', '2019-10-22', '18:22:30', 'logout'),
+(61, 'RB002', '2019-10-29', '11:21:50', 'login'),
+(62, 'RB002', '2019-10-29', '11:21:53', 'logout'),
+(63, 'RB002', '2019-10-30', '15:53:21', 'login'),
+(64, 'RB002', '2019-10-30', '15:53:22', 'logout'),
+(65, 'RB002', '2019-10-31', '11:50:18', 'login'),
+(66, 'RB002', '2019-10-31', '11:50:23', 'logout'),
+(67, 'RB002', '2019-11-02', '10:27:29', 'login');
 
 --
 -- Indexes for dumped tables
@@ -265,6 +361,12 @@ ALTER TABLE `employeemaster`
 -- Indexes for table `employeemaster1`
 --
 ALTER TABLE `employeemaster1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `newtask`
+--
+ALTER TABLE `newtask`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -286,9 +388,21 @@ ALTER TABLE `signup`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `statusmaster`
+--
+ALTER TABLE `statusmaster`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `taskmanagement`
 --
 ALTER TABLE `taskmanagement`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tasktable`
+--
+ALTER TABLE `tasktable`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -314,6 +428,12 @@ ALTER TABLE `employeemaster1`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `newtask`
+--
+ALTER TABLE `newtask`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `projectmaster`
 --
 ALTER TABLE `projectmaster`
@@ -332,16 +452,28 @@ ALTER TABLE `signup`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT for table `statusmaster`
+--
+ALTER TABLE `statusmaster`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `taskmanagement`
 --
 ALTER TABLE `taskmanagement`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `tasktable`
+--
+ALTER TABLE `tasktable`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblattendance`
 --
 ALTER TABLE `tblattendance`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
