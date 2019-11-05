@@ -324,16 +324,21 @@ $result1 = mysqli_query($conn, $query);
 <!-- view task-->
 <?php
  $connect = mysqli_connect("localhost", "root", "", "employeemanagement");  
+ 
  //$sql = "SELECT * FROM newtask INNER JOIN statusmaster ON newtask.status_id = statusmaster.status_id";  
- $sql = "SELECT * FROM newtask ";
+ $sql = "SELECT * FROM newtask";
  $result = mysqli_query($connect, $sql);  
 //  $result1 = mysqli_query($connect,"SELECT * FROM statusmaster");
  ?>  
  <div>
                 
                 <form class="form-horizontal" id="formTaskviews" method="POST" action="#" style="display: none;">
+                <tr>
+                                           
                     <div class="modal-body" >
+                    
                         <h2 style="margin-top:-37px;margin-left:490px;color: rgb(153, 47, 153)">View Task</h2><br>
+                       
                             <table class="table table-bordered" id="t01" style="border:1px solid white;width:40%;">
                                     
                                 <tr>
@@ -344,59 +349,71 @@ $result1 = mysqli_query($conn, $query);
                                                 <th>Assigned to</th>
                                                 <th>Task</th>
                                                 <th style="width:30%;">Status</th>
+
                                                 </tr>
-                                            <tr>
-                                            <?php  
+                                                <?php  
                           if(mysqli_num_rows($result) > 0)  
                           {  
                                while($row = mysqli_fetch_array($result))  
                                {  
-                          ?>  
+                          ?>            
                           <tr>  
                                <td><?php echo $row["assignee"];?></td>  
-                               <td><?php echo $row["description"]; ?></td>  
-                         <td style="width:30%;"><button type="button" class="btn" data-toggle="modal" data-target="#myModal4">Add Comments</button></td>
+                               <td><?php echo $row["description"]; ?> </td>  
+                         <td style="width:30%;"><button type="button" class="btn" data-toggle="modal" data-target=""><a href="edit.php?id=<?php echo $row['id'];?>">Add Comments</a></button></td>
                           </tr>  
-                          <?php  
-                               }  
-                          }  
-                          ?>       
+                          <?php }}?> 
+                          </form>
+     </div>                 
                           
-                          </tr>  
-                          
-                                    </table>
-                   
-                    <div id="myModal4" class="modal fade" role="dialog">
+                          <?php
+ $connect = mysqli_connect("localhost", "root", "", "employeemanagement");  
+ 
+ $sql = "SELECT * FROM newtask ";
+ $result = mysqli_query($connect, $sql);  
+
+ ?>                
+                          <div id="myModal4" class="modal fade" role="dialog">
+                          <form action=""  method="post" id="updateform">
+   
+                  
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">  <?php  
+        <?php  
                           if(mysqli_num_rows($result) > 0)  
                           {  
                                while($row = mysqli_fetch_array($result))  
                                {  
-                          ?>  <?php echo $row["assignee"];?>
-                           <?php  
-                               }  
-                          }  
-                          ?>   </h4>
+                          ?>            
+        <h4 class="modal-title"> 
+        <?php echo $row["description"];?>
+                           <?php echo $row["assignee"];?>
+                           <?php echo $row["status_id"];?>   
+                         
+                            </h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
+        <textarea col="6" id="comments"  value=" <?php echo $row["comments"]; ?>" name="comments" /></textarea>
       </div>
+     
       <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" type="button" id="updateTask" name="taskcomment">Submit</a></button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
+      <?php }}?> 
     </div>
     </div>
   </div>
+ </form>
 </div>
-                </form>
-
-            </div>
+</table>
+               
+                            
+          
             <!--end-->
     <!-- create project -->
             <div>
@@ -1167,6 +1184,7 @@ $result1 = mysqli_query($conn, $query);
            }) ;
 
 </script>
+
 <script>
 $('#login').click(function(e) {
     e.preventDefault();
