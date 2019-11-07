@@ -3,11 +3,9 @@ session_start();
 include_once '../class.user.php';
 $user = new User(); 
 $uid = $_SESSION['uid'];
-
 if (!$user->get_session()){
     header("location:accounts/login.php");
 }
-
 if (isset($_GET['q'])){
     $user->user_logout();
     header("location:accounts/login.php");
@@ -15,19 +13,15 @@ if (isset($_GET['q'])){
 ?>    
 
 <?php
-
 $user = new User(); 
 $uid = $_SESSION['uid'];
-
 if (!$user->get_session()){
 header("location:login.php");
 }
-
 if (isset($_GET['q'])){
 $user->user_logout();
 header("location:login.php");
 }
-
 ?> 
 
 <!DOCTYPE html>
@@ -285,13 +279,9 @@ header("location:login.php");
     <!-- end -->
     <!-- Create task-->
     <?php
-
 // php select option value from database
-
 $conn = mysqli_connect('localhost','root','','employeemanagement');
-
 $query = "SELECT * FROM `employeemaster`";
-
 $result1 = mysqli_query($conn, $query);
 ?>
     <div>
@@ -366,45 +356,7 @@ $result1 = mysqli_query($conn, $query);
                           </form>
      </div>                 
                           
-                          <?php
- $connect = mysqli_connect("localhost", "root", "", "employeemanagement");  
- 
- $sql = "SELECT * FROM newtask ";
- $result = mysqli_query($connect, $sql);  
-
- ?>                
-                          <div id="myModal4" class="modal fade" role="dialog">
-                          <form action=""  method="post" id="updateform">
-   
-                  
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <?php  
-                          if(mysqli_num_rows($result) > 0)  
-                          {  
-                               while($row = mysqli_fetch_array($result))  
-                               {  
-                          ?>            
-        <h4 class="modal-title"> 
-        <?php echo $row["description"];?>
-                           <?php echo $row["assignee"];?>
-                           <?php echo $row["status_id"];?>   
                          
-                            </h4>
-      </div>
-      <div class="modal-body">
-        <textarea col="6" id="comments"  value=" <?php echo $row["comments"]; ?>" name="comments" /></textarea>
-      </div>
-     
-      <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" type="button" id="updateTask" name="taskcomment">Submit</a></button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-      <?php }}?> 
     </div>
     </div>
   </div>
@@ -693,7 +645,6 @@ $result1 = mysqli_query($conn, $query);
      $conn = mysqli_connect('localhost','root','','employeemanagement');
     // $sql="SELECT empname,empid FROM employeemaster1 order by name"; 
     if($stmt = $conn->query("SELECT * from employeemaster1")){
-
     echo "<select name='selects' id='selects' class='form-control' style='width:200px;'>";
     while ($row = $stmt->fetch_assoc()) {
     echo "<option name='options' value='options'>$row[empname]</option>";
@@ -758,10 +709,8 @@ $result1 = mysqli_query($conn, $query);
     <script type="text/javascript">
         $(document).ready(function () {
         });
-
         $(document).ready(
             function() {
-
                 $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
@@ -936,7 +885,6 @@ $result1 = mysqli_query($conn, $query);
                 $('#formTaskviews').hide();
                 $('#formTask').hide();
             })
-
      
             $('#formTaskview').on('click',function(){
                 $('#projecttable').hide();
@@ -955,7 +903,6 @@ $result1 = mysqli_query($conn, $query);
                 $('#formTaskviews').show();
                 
                 })
-
             // vsales tracker view
             $('#viewsalestracker').on('click',function(){
                 $('#projecttable').hide();
@@ -1096,7 +1043,6 @@ $result1 = mysqli_query($conn, $query);
             });
            
         });
-
         function showprojectdetails($detailsid){
             var func = "yes";
             var dataString = 'id1='+ $detailsid.replace("details","")+ '&Func_projectview='+ func;
@@ -1182,7 +1128,6 @@ $result1 = mysqli_query($conn, $query);
                         });
                     });
            }) ;
-
 </script>
 
 <script>
@@ -1219,7 +1164,6 @@ $('#logout').click(function(e) {
 <!-- add profile -->
 <script>
  $(document).ready(function() {
-
 $('#addprofile').click(function() {
     $('#submitProject1').click(function(e){
     e.preventDefault();
