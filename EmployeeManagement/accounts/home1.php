@@ -43,6 +43,7 @@ header("location:login.php");
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://koalyptus.github.io/TableFilter/tablefilter/style/tablefilter.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
     <!-- Our Custom CSS -->
@@ -52,6 +53,13 @@ header("location:login.php");
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" language="javascript" src="TableFilter/tablefilter.js"></script>   -->
+    <script src="https://unpkg.com/tablefilter@latest/dist/tablefilter/tablefilter.js"></script>
+    <style>
+    #flt3_demo{
+        display:none;
+    }
+    </style>
 </head>
 
 <body>
@@ -315,10 +323,12 @@ $result1 = mysqli_query($conn, $query);
 <?php
  $connect = mysqli_connect("localhost", "root", "", "employeemanagement");  
  
- //$sql = "SELECT * FROM newtask INNER JOIN statusmaster ON newtask.status_id = statusmaster.status_id";  
- $sql = "SELECT * FROM newtask";
+
+ $sql = "SELECT * FROM taskcomment
+ JOIN newtask ON taskcomment.task_id = newtask.id
+ GROUP BY newtask.id";
  $result = mysqli_query($connect, $sql);  
-//  $result1 = mysqli_query($connect,"SELECT * FROM statusmaster");
+
  ?>  
  <div>
                 
@@ -328,30 +338,33 @@ $result1 = mysqli_query($conn, $query);
                     <div class="modal-body" >
                     
                         <h2 style="margin-top:-37px;margin-left:490px;color: rgb(153, 47, 153)">View Task</h2><br>
-                       
-                            <table class="table table-bordered" id="t01" style="border:1px solid white;width:40%;">
-                                    
+                        <table id="table1" cellspacing="0" class="mytable filterable" >  
+
+                            <table class="table table-bordered" id="demo" style="border:1px solid white;width:40%;display: block;height:600px;overflow:scroll;">
+                               <thead>     
                                 <tr>
-                                                <!-- <th style="" >EmpId</th> -->
-                                                <!-- <th style="width:200px">Date</th>
-                                                <th style="width:200px">Time</th>
-                                                <th style="width:200px">Type</th> -->
+                                             
                                                 <th>Assigned to</th>
                                                 <th>Task</th>
-                                                <th style="width:30%;">Status</th>
+                                                 <th> Status</th> 
+                                                <th>comments</th>
 
                                                 </tr>
+                                                </thead>
                                                 <?php  
                           if(mysqli_num_rows($result) > 0)  
                           {  
                                while($row = mysqli_fetch_array($result))  
                                {  
-                          ?>            
+                          ?>
+                            <tbody style="overflow:auto">          
                           <tr>  
                                <td><?php echo $row["assignee"];?></td>  
                                <td><?php echo $row["description"]; ?> </td>  
+                              <td><?php echo $row["status"]; ?> </td>   
                          <td style="width:30%;"><button type="button" class="btn" data-toggle="modal" data-target=""><a href="edit.php?id=<?php echo $row['id'];?>">Add Comments</a></button></td>
                           </tr>  
+                          </tbody>
                           <?php }}?> 
                           </form>
      </div>                 
@@ -1289,6 +1302,51 @@ $('#addsalestracker').click(function() {
                     });
             });
 }); 
-</script>
 
+</script>
+<script>
+var filtersConfig = {
+  // instruct TableFilter location to import ressources from
+  base_path: 'https://unpkg.com/tablefilter@latest/dist/tablefilter/',
+  col_0: 'select',
+  alternate_rows: true,
+  rows_counter: true,
+  btn_reset: true,
+  loader: true,
+  mark_active_columns: true,
+  highlight_keywords: true,
+  no_results_message: true,
+  col_types: [
+    'string', 'string', 'string', 'string',
+    
+  ],
+  custom_options: {
+    cols: [3],
+    texts: [
+      [
+        '0 - 25 000',
+        '100 000 - 1 500 000'
+      ]
+    ],
+    values: [
+      [
+        '>0 && <=25000',
+        '>100000 && <=1500000'
+      ]
+    ],
+    sorts: [false]
+  },
+  col_widths: [
+    '150px', '300px', '200px', '300px',
+   
+  ],
+  extensions: [{
+    name: 'sort',
+    images_path: 'https://unpkg.com/tablefilter@latest/dist/tablefilter/style/themes/'
+  }]
+};
+
+var tf = new TableFilter('demo', filtersConfig);
+tf.init();
+</script>
 </html>
