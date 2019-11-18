@@ -56,7 +56,7 @@ header("location:login.php");
     <!-- <script type="text/javascript" language="javascript" src="TableFilter/tablefilter.js"></script>   -->
     <script src="https://unpkg.com/tablefilter@latest/dist/tablefilter/tablefilter.js"></script>
     <style>
-    #flt3_demo{
+    #flt3_demo,#flt4_demo{
         display:none;
     }
     </style>
@@ -321,13 +321,16 @@ $result1 = mysqli_query($conn, $query);
 <!--end-->
 <!-- view task-->
 <?php
- $connect = mysqli_connect("localhost", "root", "", "employeemanagement");  
  
+ $connect = mysqli_connect("localhost", "root", "", "employeemanagement");  
 
- $sql = "SELECT * FROM taskcomment
- JOIN newtask ON taskcomment.task_id = newtask.id
- GROUP BY newtask.id";
- $result = mysqli_query($connect, $sql);  
+
+ $result = mysqli_query($connect,"SELECT * FROM newtask ORDER BY id DESC;");
+
+//  $sql = "SELECT * FROM taskcomment
+//  JOIN newtask ON taskcomment.task_id = newtask.id
+//  GROUP BY newtask.id";
+//  $result = mysqli_query($connect, $sql);  
 
  ?>  
  <div>
@@ -338,7 +341,7 @@ $result1 = mysqli_query($conn, $query);
                     <div class="modal-body" >
                     
                         <h2 style="margin-top:-37px;margin-left:490px;color: rgb(153, 47, 153)">View Task</h2><br>
-                        <table id="table1" cellspacing="0" class="mytable filterable" >  
+                        <table id="table1" cellspacing="0" class="mytable filterable" style="margin-left:20px;!important">  
 
                             <table class="table table-bordered" id="demo" style="border:1px solid white;width:40%;display: block;height:600px;overflow:scroll;">
                                <thead>     
@@ -346,8 +349,9 @@ $result1 = mysqli_query($conn, $query);
                                              
                                                 <th>Assigned to</th>
                                                 <th>Task</th>
-                                                 <th> Status</th> 
-                                                <th>comments</th>
+                                                 <th>Status</th> 
+                                                <th>Comments</th>
+                                                <th>Update status</th>
 
                                                 </tr>
                                                 </thead>
@@ -361,12 +365,14 @@ $result1 = mysqli_query($conn, $query);
                           <tr>  
                                <td><?php echo $row["assignee"];?></td>  
                                <td><?php echo $row["description"]; ?> </td>  
-                              <td><?php echo $row["status"]; ?> </td>   
+                              <td><?php echo $row["status_id"]; ?> </td>   
                          <td style="width:30%;"><button type="button" class="btn" data-toggle="modal" data-target=""><a href="edit.php?id=<?php echo $row['id'];?>">Add Comments</a></button></td>
+                         <td><button type="button" class="btn" onclick="alert("test");" data-toggle="modal" data-target=""><a href="status.php?id=<?php echo $row['id'];?>">Status</a></button></td>
                           </tr>  
                           </tbody>
                           <?php }}?> 
                           </form>
+                          
      </div>                 
                           
                          
@@ -1337,7 +1343,7 @@ var filtersConfig = {
     sorts: [false]
   },
   col_widths: [
-    '150px', '300px', '200px', '300px',
+    '150px', '300px', '200px', '300px','200px',
    
   ],
   extensions: [{
