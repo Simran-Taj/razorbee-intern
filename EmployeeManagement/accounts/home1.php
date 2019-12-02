@@ -10,9 +10,7 @@ if (isset($_GET['q'])){
     $user->user_logout();
     header("location:accounts/login.php");
 }
-?>    
 
-<?php
 $user = new User(); 
 $uid = $_SESSION['uid'];
 if (!$user->get_session()){
@@ -59,6 +57,18 @@ header("location:login.php");
     #flt3_demo,#flt4_demo{
         display:none;
     }
+    #demo{
+        width:1010px;
+    }
+    .tot > span:nth-child(1){
+        display:none;
+    }
+    .tot > span:nth-child(2):before{
+        content: 'There are ';
+    }
+    .tot > span:nth-child(2):after{
+        content: ' rows in the table';
+    }
     </style>
 </head>
 
@@ -103,6 +113,9 @@ header("location:login.php");
                             <a href="#">View</a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <a href="#" id="sheetView">Timesheets</a>
                 </li>
                 <li>
                     <a href="#tasksub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Task Management</a>
@@ -185,9 +198,88 @@ header("location:login.php");
              <div>
                 <p style="color:rgb(153, 47, 153);font-size:40px;margin-left:400px;margin-top:200px" id="attendancelogoutmessage"></p>       
             </div>
+
+            <!-- <div>
+            <form class="form-horizontal" id="formss" method="POST" action="#" style="display: none;">
+            <h2 style="color:rgb(153, 47, 153);margin-top:-45px;margin-left:220px;">Create Time Sheet</h1> 
+            <textarea id="">Enter the task</textarea>
+            <button type="button" name="submitnew">Add task
+
+            </form>
+            </div> -->
+            <!-- Timesheet 2 -->
+            <div>
+<?php
+$connect = mysqli_connect("localhost", "root", "", "employeemanagement");  
+$result = mysqli_query($connect,"SELECT * FROM taskmanagement");
+?>
+<form class="form-horizontal" id="formTime" method="POST" action="#" style="display: none;">
+                <div class="modal-body" style="margin-left:300px"><br>
+                <h2 style="color:rgb(153, 47, 153);margin-top:-45px;margin-left:220px;">Time Sheet</h1> 
+                            <table class="table table-bordered" id="t02" style="border:1px solid white;">
+                            <tr>
+                                <!-- <th style="width:150px;">Date</th>
+                                <th style="width:350px;">Task</th>
+                                <th >Add Task</th> -->
+                                <th style="position:fixed;width:561px">Date<span style="margin-left:120px">Task</span><span style="margin-left:260px"> Add task </span></th>
+                                <th style="width:360px;">Task</th>
+                                <th >Add Task</th>
+                                <!-- <script>document.write(new Date());</script> -->
+                            </tr>
+                            <tr>
+                                <?php
+                                
+                                    $date = date("Y-m"). "-01"; //change the date -   (current date minus 15 days)
+                                    $end_date = date("Y-m-d");
+                                    $task=0;
+                                    while(strtotime($date) <= strtotime($end_date)) 
+                                    {
+                                        echo "<tr>" ."<td>" . "$date" ."</td>" ;
+                                        $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
+                                        $task++; 
+                                       
+                                            // echo "<script>document.write(new Date())</script>";
+                                        echo "<td><textarea id=task$task readonly></textarea>"."</td>";
+                                      
+                                        // while($row = mysqli_fetch_array($result));
+                                        echo "<td>"."<button  id=addtask$task type=button class=btn btn-primary btn-lg data-toggle=modal onclick=save('task$task') ><a href=>Add task</a></button>"."</td>"."</tr>"."</tr>";
+                                    } 
+                                ?>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            <!-- </div> -->
+            <!-- end -->
+    <!-- add task modal -->
+    <div class="modal" style="margin-top:200px;margin-left:150px;" id="myModal3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Task</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                    <!-- Modal body -->
+                <div class="modal-body">
+                    <textarea type="text" class="form-control" id="taskdescription"  value=" <?php echo $ar[task]; ?> placeholder="Enter Task"></textarea>
+                </div>
+                    <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="submitbuttons">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="closebutton">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+<!--End-->
+           
     <!-- view attendance -->
             <div>
-                
+            
                 <form class="form-horizontal" id="formCreate2" method="POST" action="#" style="display: none;">
                     <div class="modal-body" >
                         <h2 style="margin-top:-37px;margin-left:490px;color: rgb(153, 47, 153)">Attendance Sheet</h2><br>
@@ -293,7 +385,7 @@ $query = "SELECT * FROM `employeemaster`";
 $result1 = mysqli_query($conn, $query);
 ?>
     <div>
-                <form class="form-horizontal" id="formTask" method="POST" action="taskcreate.php" style="display: none;"><br><br>
+                <form class="form-horizontal" id="formTask" method="POST" action="" style="display: none;"><br><br>
                 <h2 style="color:rgb(153, 47, 153);margin-top:-30px;margin-left:450px;">Create New Task</h1> <br>   
                  <div class="container" style="border-radius: 25px;border:1px solid black;"><br><br>
                 <b>Assigneed to:</b>
@@ -309,7 +401,7 @@ $result1 = mysqli_query($conn, $query);
                     <br>
                     <textarea class="form-control" name="description" id="description" placeholder ="Enter Description"></textarea>
                     <br><br>
-                    <b>Status</b>: <span name="status_id" value="open">open</span>
+                    <b>Status</b>: <span name="status" value="open">open</span>
                     <br><br>
                     <button type="submit" class="btn btn-primary" type="button" id="submitTask">Submit</button>
                     <button type="reset" class="btn btn-danger waves-effect waves-light" onclick="window.history.back();">Cancel</button>
@@ -334,6 +426,18 @@ $result1 = mysqli_query($conn, $query);
 
  ?>  
  <div>
+ <style>
+ #demos{
+  /**make table can scroll**/
+  max-height: 800px;
+  overflow: auto;
+  /** add some style**/
+  /*padding: 2px;*/
+  
+  box-shadow: 0 0 1px 3px #ddd;
+}
+
+ </style>
                 
                 <form class="form-horizontal" id="formTaskviews" method="POST" action="#" style="display: none;">
                 <tr>
@@ -343,15 +447,15 @@ $result1 = mysqli_query($conn, $query);
                         <h2 style="margin-top:-37px;margin-left:490px;color: rgb(153, 47, 153)">View Task</h2><br>
                         <table id="table1" cellspacing="0" class="mytable filterable" style="margin-left:20px;!important">  
 
-                            <table class="table table-bordered" id="demo" style="border:1px solid white;width:40%;display: block;height:600px;overflow:scroll;">
-                               <thead>     
-                                <tr>
+                            <table class="table table-bordered" id="demo" style="border:1px solid white;width:30%!important;display: block;height:600px;overflow:scroll;">
+                               <thead style="">     
+                                <tr style="background-color:#992f99!important;">
                                              
-                                                <th>Assigned to</th>
-                                                <th>Task</th>
-                                                 <th>Status</th> 
-                                                <th>Comments</th>
-                                                <th>Update status</th>
+                                                <th style="background-color:#992f99!important;text-align:center">Assigned to</th>
+                                                <th style="background-color:#992f99!important;text-align:center">Task</th>
+                                                <th style="background-color:#992f99!important;text-align:center">Status</th> 
+                                                <th style="background-color:#992f99!important;text-align:center">Comments</th>
+                                            
 
                                                 </tr>
                                                 </thead>
@@ -365,9 +469,9 @@ $result1 = mysqli_query($conn, $query);
                           <tr>  
                                <td><?php echo $row["assignee"];?></td>  
                                <td><?php echo $row["description"]; ?> </td>  
-                              <td><?php echo $row["status_id"]; ?> </td>   
+                              <td><?php echo $row["status"]; ?> </td>   
                          <td style="width:30%;"><button type="button" class="btn" data-toggle="modal" data-target=""><a href="edit.php?id=<?php echo $row['id'];?>">Add Comments</a></button></td>
-                         <td><button type="button" class="btn" onclick="alert("test");" data-toggle="modal" data-target=""><a href="status.php?id=<?php echo $row['id'];?>">Status</a></button></td>
+                        
                           </tr>  
                           </tbody>
                           <?php }}?> 
@@ -382,10 +486,27 @@ $result1 = mysqli_query($conn, $query);
  </form>
 </div>
 </table>
-               
-                            
+</table>              
+      <script>
+      // Code goes here
+'use strict'
+// window.onload = function(){
+//   var tableCont = document.querySelector('#demos')
+  /**
+   * scroll handle
+   * @param {event} e -- scroll event
+   */
+//   function scrollHandle (e){
+//     var scrollTop = this.scrollTop;
+//     this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
+//   }
+  
+//   tableCont.addEventListener('scroll',scrollHandle)
+// }
+      </script>                      
           
             <!--end-->
+
     <!-- create project -->
             <div>
                 <form class="form-horizontal" id="formCreate" method="POST" action="#" style="display: none;"><br><br>
@@ -735,6 +856,8 @@ $result1 = mysqli_query($conn, $query);
             });
             $('#viewproject').on('click',function(){
                 $('#projecttable').show();
+                $('#formTime').hide();
+                $('#formEdit').hide();
                 $('#formCreate').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate1').hide();
@@ -752,6 +875,8 @@ $result1 = mysqli_query($conn, $query);
             })
             $('#createproject').on('click',function(){
                 $('#projecttable').hide();
+                $('#formTime').hide();
+                $('#formEdit').hide();
                 $('#formCreate').show();
                 $('#ProjectDetails').hide();
                 $('#formCreate1').hide();
@@ -771,8 +896,10 @@ $result1 = mysqli_query($conn, $query);
             $('#timesheet').on('click',function(){
                 $('#formCreate1').show();
                 $('#projecttable').hide();
+                $('#formEdit').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
+                $('#formTime').hide();
                 $('#formCreate2').hide();
                 $('#attendanceloginmessage').hide();
                 $('#attendancelogoutmessage').hide();
@@ -785,8 +912,30 @@ $result1 = mysqli_query($conn, $query);
                 $('#formTaskviews').hide();
                 $('#formTask').hide();
             })
+            $('#sheetView').on('click',function(){
+                $('#formCreate1').hide();
+                $('#formTime').show();
+                $('#projecttable').hide();
+                $('#formEdit').hide();
+                $('#ProjectDetails').hide();
+                $('#formCreate').hide();
+                $('#formCreate2').hide();
+                $('#attendanceloginmessage').hide();
+                $('#attendancelogoutmessage').hide();
+                $('#formss').show();
+                $('#admin').hide();
+                $('#viewtable').hide();
+                $('#changepassword1').hide();
+                $('#salestracker').hide();
+                $('#salestracker1').hide();
+                $('#admin1').hide();
+                $('#formTaskviews').hide();
+                $('#formTask').hide();
+            })
             $('#viewattendance').on('click',function(){
                 $('#formCreate1').hide();
+                $('#formTime').hide();
+                $('#formEdit').hide();
                 $('#projecttable').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
@@ -805,7 +954,9 @@ $result1 = mysqli_query($conn, $query);
             // attendance
             $('#taskCreate').on('click',function(){
                 $('#projecttable').hide();
+                $('#formTime').hide();
                 $('#formCreate1').hide();
+                $('#formEdit').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
                 $('#formCreate2').hide();
@@ -840,6 +991,8 @@ $result1 = mysqli_query($conn, $query);
             $('#addprofile').on('click',function(){
                 $('#projecttable').hide();
                 $('#formCreate1').hide();
+                $('#formEdit').hide();
+                $('#formTime').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
                 $('#admin').show();
@@ -857,8 +1010,10 @@ $result1 = mysqli_query($conn, $query);
             $('#viewprofile').on('click',function(){
                 $('#projecttable').hide();
                 $('#formCreate1').hide();
+                $('#formTime').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
+                $('#formEdit').hide();
                 $('#viewtable').show();
                 $('#admin1').hide();
                 $('#attendanceloginmessage').hide();
@@ -873,10 +1028,12 @@ $result1 = mysqli_query($conn, $query);
             // change password
             $('#changepassword').on('click',function(){
                 $('#projecttable').hide();
+                $('#formTime').hide();
                 $('#formCreate1').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
                 $('#changepassword1').show();
+                $('#formEdit').hide();
                 $('#attendanceloginmessage').hide();
                 $('#attendancelogoutmessage').hide();
                 $('#viewtable').hide();
@@ -891,6 +1048,8 @@ $result1 = mysqli_query($conn, $query);
             $('#addsalestracker').on('click',function(){
                 $('#projecttable').hide();
                 $('#formCreate1').hide();
+                $('#formEdit').hide();
+                $('#formTime').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
                 $('#salestracker').show();
@@ -908,6 +1067,7 @@ $result1 = mysqli_query($conn, $query);
             $('#formTaskview').on('click',function(){
                 $('#projecttable').hide();
                 $('#formCreate1').hide();
+                $('#formTime').hide();
                 $('#ProjectDetails').hide();
                 $('#formCreate').hide();
                 $('#formTask').hide();
@@ -926,7 +1086,9 @@ $result1 = mysqli_query($conn, $query);
             $('#viewsalestracker').on('click',function(){
                 $('#projecttable').hide();
                 $('#formCreate1').hide();
+                $('#formTime').hide();
                 $('#ProjectDetails').hide();
+                $('#formEdit').hide();
                 $('#formCreate').hide();
                 $('#salestracker1').show();
                 $('#attendanceloginmessage').hide();
@@ -1100,7 +1262,7 @@ $result1 = mysqli_query($conn, $query);
     
     $(document).ready(
             function(){
-                 $("#submitbutton").click(
+                 $("#submitbuttons").click(
                     function(e){
                        c = $("#taskdescription").val();
                        $(".modal").modal('hide');
@@ -1141,7 +1303,7 @@ $result1 = mysqli_query($conn, $query);
                         data: data,
                         cache: false,
                              success: function(result){
-                             document.getElementById("formTask").reset();
+                                location.reload();  
                              alert("task is successfully updated");
                         }
                         });
@@ -1343,7 +1505,7 @@ var filtersConfig = {
     sorts: [false]
   },
   col_widths: [
-    '150px', '300px', '200px', '300px','200px',
+    '150px', '300px', '200px', '300px',
    
   ],
   extensions: [{
